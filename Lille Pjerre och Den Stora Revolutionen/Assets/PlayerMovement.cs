@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Initializes the different states the player is going to be in
+
 public enum PlayerState
 {
     neutral,
@@ -10,77 +12,110 @@ public enum PlayerState
 
 public class PlayerMovement : MonoBehaviour
 {
+    #region Variables
+
+    // Sets the variables we will be using
+
     PlayerState currentState;
+
     float speed = 2;
     float runningSpeed = 4;
+    float moveX, moveY;
+
+    bool facingRight = true,
+          isRunning = false;
 
     Rigidbody2D rigidBody2D;
-    bool facingRight = true;
-
-    Animator anim;
+    Animator animator;
 
     void Start()
     {
-        this.rigidBody2D = gameObject.GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        // We need the rigidbody and animator of this GameObject 
+
+        this.rigidBody2D = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
+        // The playerstate starts as neutral
+
         currentState = PlayerState.neutral;
     }
+    #endregion
+
+    #region MovementManaging
 
     void Update()
     {
+        // Handles Input
+
+        moveY = Input.GetAxis("Vertical");
+        moveX = Input.GetAxis("Horizontal");
+
+        if (Input.GetKey(KeyCode.LeftShift))
+            isRunning = true;
+        else
+            isRunning = false;
+    }
+
+    void FixedUpdate()
+    {
         Movement();
 
-        LadderClimb();
+        // Handles animation flips depending of direction
+
+        if (moveX > 0 && !facingRight)
+            Flip();
+        if (moveX < 0 && facingRight)
+            Flip();
     }
 
     private void Movement()
     {
-        float move = Input.GetAxis("Horizontal");
+        // Controlls the animator, depending on direction
+        animator.SetFloat("Speed", Mathf.Abs(moveX));
 
-        anim.SetFloat("Speed", Mathf.Abs(move));
-
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (isRunning)
         {
-            anim.SetBool("Running", true);
-            rigidBody2D.velocity = new Vector2(move * runningSpeed, rigidBody2D.velocity.y);
+            // Starts the running animation and doubles the speed
+            animator.SetBool("Running", true);
+            rigidBody2D.velocity = new Vector2(moveX * runningSpeed, rigidBody2D.velocity.y);
         }
         else
         {
-            anim.SetBool("Running", false);
-            rigidBody2D.velocity = new Vector2(move * speed, rigidBody2D.velocity.y);
+            // If the player is not running, we are using the normal speed 
+            // The animator stops the running animation
+
+            animator.SetBool("Running", false);
+            rigidBody2D.velocity = new Vector2(moveX * speed, rigidBody2D.velocity.y);
         }
 
-        if (move > 0 && !facingRight)
-            Flip();
-        if (move < 0 && facingRight)
-            Flip();
+        if (currentState == PlayerState.climbing)
+
+            // If the player is in the climbing state, he can only move along the y-axis
+
+            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, speed * moveY);
     }
 
     void Flip()
     {
+        // Mirrors the animation image of you change direction
+
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+    #endregion
 
-
-    void LadderClimb()
-    {
-        float climb = Input.GetAxis("Vertical");
-
-        if (currentState == PlayerState.climbing)
-        {
-            this.rigidBody2D.gravityScale = 0;
-            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, speed * climb);
-        }
-    }
-
+    #region CollisionManager
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.name == "Ladder")
         {
+            // If the player is colliding with a ladder, it actives the climbing state
+            // And sets the gravity of the player to zero
+
             currentState = PlayerState.climbing;
+            this.rigidBody2D.gravityScale = 0;
         }
     }
 
@@ -88,8 +123,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.name.Contains("Ladder"))
         {
+            // When the player exits the ladders hitbox, it actives the neutral state 
+            // And resets the gravity of the player
+
             currentState = PlayerState.neutral;
             this.rigidBody2D.gravityScale = 6;
         }
     }
+    #endregion
 }

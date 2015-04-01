@@ -3,6 +3,10 @@ using System.Collections;
 
 public class MainMenuScript : MonoBehaviour
 {
+    #region Variables
+
+    // Sets the variables we will be using
+
     public Texture2D fadeOutTexture;
 
     int drawDepth = 1;
@@ -12,7 +16,9 @@ public class MainMenuScript : MonoBehaviour
     float fadeSpeed = 0.5f;
     float alpha = 1.0f;
 
-    bool isEntering = false;
+    bool clickedPlay = false;
+
+    // Sets a method which is used to wait an amount of seconds before proceeding
 
     IEnumerator Wait()
     {
@@ -23,21 +29,51 @@ public class MainMenuScript : MonoBehaviour
 
     void Start()
     {
+        // Sets the next level to be one index higher than our current level index
+
         nextLevel = Application.loadedLevel + 1;
+
+        // Because of the fading function, we do not want to destroy this gameobject right away after starting the game
+
         DontDestroyOnLoad(gameObject);
     }
 
+    #endregion
+
+    #region LevelManagement
+
+    void OnLevelWasLoaded()
+    {
+        // This is called when a new level is loaded, and we begin fading from 0 to 100
+
+        BeginFade(-1);
+
+        // Calls the waiting method, to give the fading some time
+
+        StartCoroutine(Wait());
+    }
+
+    #endregion
+
+    #region Buttons and fading
+
     void OnGUI()
     {
-        if (!isEntering)
+        // If we haven't clicked the Play Game button yet, display the button
+
+        if (!clickedPlay)
             if (GUI.Button(new Rect(200, 200, 200, 200), "Play Game"))
             {
+                // If we clicked it, load the next level and start fading
+
                 Application.LoadLevel(nextLevel);
-                isEntering = true;
+                clickedPlay = true;
             }
 
-        if (isEntering)
+        if (clickedPlay)
         {
+            // When the button is clicked, start fading by decreasing the alpha value a rectangle which covers the screen
+
             alpha += fadeDir * fadeSpeed * Time.deltaTime;
 
             alpha = Mathf.Clamp01(alpha);
@@ -50,13 +86,11 @@ public class MainMenuScript : MonoBehaviour
 
     public float BeginFade(int direction)
     {
+        // When this is called, the fading is started
+
         fadeDir = direction;
         return (fadeSpeed);
     }
 
-    void OnLevelWasLoaded()
-    {
-        BeginFade(-1);
-        StartCoroutine(Wait());
-    }
+    #endregion
 }
