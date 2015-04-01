@@ -1,0 +1,179 @@
+fileFormatVersion: 2
+guid: 964d6e80b96e8b74e9461c9bbc9d7bfc
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Building_Structure_0
+    21300002: Building_Structure_1
+    21300004: Building_Structure_2
+    21300006: Building_Structure_3
+    21300008: Building_Structure_4
+    21300010: Building_Structure_5
+    21300012: Building_Structure_6
+    21300014: Building_Structure_7
+    21300016: Building_Structure_8
+    21300018: Building_Structure_9
+    21300020: Building_Structure_10
+    21300022: Building_Structure_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Building_Structure_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 585
+        width: 277
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Structure_1
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 585
+        width: 418
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Structure_2
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 587
+        width: 514
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Structure_3
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 286
+        width: 278
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Structure_4
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 285
+        width: 419
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Structure_5
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 286
+        width: 514
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Structure_6
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 203
+        width: 280
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Structure_7
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 199
+        width: 420
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Structure_8
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 202
+        width: 514
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Structure_9
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 17
+        width: 280
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Structure_10
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 13
+        width: 420
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Structure_11
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 16
+        width: 515
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

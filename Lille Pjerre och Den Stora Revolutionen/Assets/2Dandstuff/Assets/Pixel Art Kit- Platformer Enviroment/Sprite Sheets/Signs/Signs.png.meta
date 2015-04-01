@@ -1,0 +1,212 @@
+fileFormatVersion: 2
+guid: 8b29e2822995fc94194a82bfd29ca4bd
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Signs_0
+    21300002: Signs_1
+    21300004: Signs_2
+    21300006: Signs_3
+    21300008: Signs_4
+    21300010: Signs_5
+    21300012: Signs_6
+    21300014: Signs_7
+    21300016: Signs_8
+    21300018: Signs_9
+    21300020: Signs_10
+    21300022: Signs_11
+    21300024: Signs_12
+    21300026: Signs_13
+    21300028: Signs_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Signs_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 568
+        width: 51
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_1
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 568
+        width: 51
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_2
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 568
+        width: 51
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_3
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 568
+        width: 51
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_4
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 487
+        width: 56
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 487
+        width: 56
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_6
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 486
+        width: 56
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_7
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 486
+        width: 56
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_8
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 377
+        width: 83
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_9
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 377
+        width: 83
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_10
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 378
+        width: 83
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_11
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 234
+        width: 78
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_12
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 234
+        width: 136
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_13
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 111
+        width: 246
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Signs_14
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 18
+        width: 51
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
