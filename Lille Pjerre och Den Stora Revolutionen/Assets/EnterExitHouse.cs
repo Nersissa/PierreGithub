@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnterExitHouse : MonoBehaviour {
+public class EnterExitHouse : MonoBehaviour
+{
+    // You need to connect this with another Object for it to work!
+    // Preferably another door, which in turn you connect this one with
 
     public GameObject teleport;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E))
+        // This will only activate when the player presses the use-button
+
+        if (other.gameObject.tag == "Player" && Input.GetButton("Use"))
         {
             other.gameObject.transform.position = teleport.gameObject.transform.position;
         }
@@ -15,7 +20,9 @@ public class EnterExitHouse : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E))
+        // This will only activate when the player presses the use-button
+
+        if (other.gameObject.tag == "Player" && Input.GetButton("Use"))
         {
             other.gameObject.transform.position = teleport.gameObject.transform.position;
         }

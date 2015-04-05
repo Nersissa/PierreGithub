@@ -14,13 +14,15 @@ public class MainMenuScript : MonoBehaviour
     int nextLevel;
 
     float fadeSpeed = 0.5f;
-    float alpha = 1.0f;
+    float alpha = 0.0f;
 
     bool clickedPlay = false;
 
+    IntroText introText;
+
     // Sets a method which is used to wait an amount of seconds before proceeding
 
-    IEnumerator Wait()
+    IEnumerator WaitForGame()
     {
         yield return new WaitForSeconds(3);
         if (!Application.loadedLevelName.Contains("MainMenu"))
@@ -29,6 +31,10 @@ public class MainMenuScript : MonoBehaviour
 
     void Start()
     {
+        // Gets the IntroText Component in order to start the scrolling text
+
+        introText = GetComponent<IntroText>();
+
         // Sets the next level to be one index higher than our current level index
 
         nextLevel = Application.loadedLevel + 1;
@@ -50,7 +56,7 @@ public class MainMenuScript : MonoBehaviour
 
         // Calls the waiting method, to give the fading some time
 
-        StartCoroutine(Wait());
+        StartCoroutine(WaitForGame());
     }
 
     #endregion
@@ -64,15 +70,14 @@ public class MainMenuScript : MonoBehaviour
         if (!clickedPlay)
             if (GUI.Button(new Rect(200, 200, 200, 200), "Play Game"))
             {
-                // If we clicked it, load the next level and start fading
+                // If we clicked it, start fading, start showing the text
 
-                Application.LoadLevel(nextLevel);
                 clickedPlay = true;
+                BeginFade(1);
+                introText.Show();
             }
 
-        if (clickedPlay)
-        {
-            // When the button is clicked, start fading by decreasing the alpha value a rectangle which covers the screen
+            // Handles the fading mechanics
 
             alpha += fadeDir * fadeSpeed * Time.deltaTime;
 
@@ -81,12 +86,11 @@ public class MainMenuScript : MonoBehaviour
             GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, alpha);
             GUI.depth = drawDepth;
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), fadeOutTexture);
-        }
     }
 
     public float BeginFade(int direction)
     {
-        // When this is called, the fading is started
+        // When called, the fading is started
 
         fadeDir = direction;
         return (fadeSpeed);

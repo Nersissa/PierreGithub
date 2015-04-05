@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CheckForField : MonoBehaviour {
-
+public class CheckForField : MonoBehaviour
+{
     Sowing sowing;
 
-	void Start () {
+    void Start()
+    {
+        // This script will only check if the player has entered the field
+
         sowing = GetComponentInParent<Sowing>();
-	}
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
