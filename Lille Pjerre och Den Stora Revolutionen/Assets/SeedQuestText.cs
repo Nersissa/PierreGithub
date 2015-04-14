@@ -4,6 +4,7 @@ using System.Collections;
 public class SeedQuestText : MonoBehaviour
 {
     #region Variables
+
     // Sets up the bools we will be needing for display different textmessages
 
     public bool TryingToSowWithoutSeeds = false;
@@ -22,6 +23,7 @@ public class SeedQuestText : MonoBehaviour
 
     #endregion
     #region TextManagement
+
     void OnGUI()
     {
         // This method is called as an Update method
@@ -59,5 +61,6 @@ public class SeedQuestText : MonoBehaviour
             textTimer = 10;
         }
     }
+
     #endregion
 }

@@ -2,25 +2,27 @@
 using System.Collections;
 using System.IO;
 
-public class IntroText : MonoBehaviour
+public class ScrollingText : MonoBehaviour
 {
-    #region Variables
-
     // The varibles we will be using
 
-    internal bool IsFinished = false;
-    internal bool ShowText = false;
+    bool DisplayingText = false;
 
-    ArrayList Text = new ArrayList();
+    ArrayList Text;
 
     float ScrollingSpeed = 50;
     float textOffset = 0;
 
+    int levelToLoad;
+
     GUIStyle style;
+
+    FadingScript fading;
 
     void Start()
     {
-        ReadFile();
+        fading = GetComponent<FadingScript>();
+
         AdjustStyle();
     }
 
@@ -37,37 +39,11 @@ public class IntroText : MonoBehaviour
         style.normal.textColor = Color.red;
     }
 
-    void ReadFile()
-    {
-        // First of all we need to find the file
-        // And for that we need the name
-
-        var filename = "IntroText";
-
-        // Then we search through the entire asset folder
-
-        var paths = Directory.GetFiles(Application.dataPath, filename + ".txt", SearchOption.AllDirectories);
-
-        // Tell the Streamreader which file to read
-
-        var reader = new StreamReader(paths[0], System.Text.Encoding.Default);
-
-        // Read and save every line of the file
-
-        while (!reader.EndOfStream)
-            Text.Add(reader.ReadLine());
-
-        reader.Close();
-    }
-
-    #endregion
-    #region TextManagement
-
     void OnGUI()
     {
         // If we haven't clicked the Start Button, we haven't started and we won't be needing any text
 
-        if (!ShowText)
+        if (!DisplayingText)
             return;
 
         // Handles the scrolling
@@ -104,18 +80,31 @@ public class IntroText : MonoBehaviour
 
             // If the last line has reached the top of the screen
             // We are finished and can start the game
+            // And stop displaying the text
 
-            if (currLine == lastLine)
-                if (labelPosY <= 0)
-                    Application.LoadLevel(Application.loadedLevel + 1);
+            if (currLine == lastLine && labelPosY <= 0)
+            {
+                Application.LoadLevel("Act" + levelToLoad.ToString() + "Scene1");
+                DisplayingText = false;
+                fading.Begin(1);
+            }
         }
     }
 
-    internal void Show()
+    internal void Display(int ActNumber)
     {
-        // Just a method which triggers the text to show
-        ShowText = !ShowText;
-    }
+        // Hides the menu buttons
 
-    #endregion
+        GetComponent<MenuButtonsFactory>().enabled = false;
+
+        //  Makes sure the correct level is loaded
+
+        levelToLoad = ActNumber;
+
+        // Displays the correct text depending on act
+
+        Text = Scenes.GetActText(ActNumber);
+        DisplayingText = true;
+        fading.Begin(1);
+    }
 }
