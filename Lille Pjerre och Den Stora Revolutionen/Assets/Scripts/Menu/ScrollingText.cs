@@ -42,11 +42,6 @@ public class ScrollingText : MonoBehaviour
         style.normal.textColor = Color.red;
     }
 
-    void FixedUpdate()
-    {
-
-    }
-
     void OnGUI()
     {
         // If we haven't clicked the Start Button, we haven't started and we won't be needing any text
@@ -81,8 +76,6 @@ public class ScrollingText : MonoBehaviour
 
             // Draws the actual label, fixing size and position
             // Via the variables above
-
-            //GUI.depth = -1;
 
             GUI.Label(new Rect(labelPosX, labelPosY, labelSize.x, labelSize.y), currLine.ToString(), style);
 
