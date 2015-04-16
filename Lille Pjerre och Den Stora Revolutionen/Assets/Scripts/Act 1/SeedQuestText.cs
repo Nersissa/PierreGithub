@@ -11,6 +11,7 @@ public class SeedQuestText : MonoBehaviour
     public bool PickedUpSeeds = false;
     public bool PickUpSeeds = true;
     public bool SowedSeeds = false;
+    public bool SeedPickupPrompt = false;
 
     // Sets up the strings of text. These are easily costumizable later on
 
@@ -18,6 +19,7 @@ public class SeedQuestText : MonoBehaviour
     private string pickedupseeds = "Now when you have picked up your seeds, start sowing them on the fieldish-looking thing to your right! \n Good Luck!";
     private string tryingtosowwithoutseeds = "You can't sow yet, you haven't picked up the seeds! \n It's to your left!";
     private string sowedseeds = "Good Job! \n You Deserve a break. \n walk into your house to rest.";
+    private string seedpickupprompt = "Plocka upp säcken med frön längst bort i ladan!";
 
     // Sets the time for which how long the text will show
 
@@ -43,6 +45,9 @@ public class SeedQuestText : MonoBehaviour
 
         if (SowedSeeds)
             ShowText(sowedseeds, ref SowedSeeds);
+
+        if (SeedPickupPrompt)
+            ShowText(seedpickupprompt, ref SeedPickupPrompt);
     }
 
     void ShowText(string text, ref bool inputBool)
@@ -58,7 +63,7 @@ public class SeedQuestText : MonoBehaviour
         GUILayout.EndArea();
 
         // When the timer reaches zero, it resets the timer
-        // and turns the bool to false to it isn't called repeatedly
+        // and turns the bool to false so it isn't called repeatedly
 
         if (textTimer <= 0)
         {

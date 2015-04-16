@@ -32,7 +32,7 @@ public class Seeds : MonoBehaviour
 
             Destroy(gameObject);
 
-            // It will also diplay a text, telling the player to go and sow the seeds
+            // The player will then get the seeds, thus being able to sow at the field
 
             sowingQuest.CarryingSeeds = true;
 
