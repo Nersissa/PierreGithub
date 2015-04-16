@@ -12,18 +12,14 @@ public class TriggerNextScene : MonoBehaviour
     {
         text = GameObject.Find("PermObject").GetComponent<ScrollingText>();
         quest = GameObject.Find("Sowing").GetComponent<SeedQuestText>();
-
-        // We will be using this in the next scene as well
-
-        DontDestroyOnLoad(gameObject);
     }
 
     void Update()
     {
         // We do not need this script unless the player has completed the sowing quest
 
-        //if (!quest.SowedSeeds)
-        //    return;
+        if (!quest.SowedSeeds)
+            return;
 
         // If the player is close to the bed and trying to rest
 

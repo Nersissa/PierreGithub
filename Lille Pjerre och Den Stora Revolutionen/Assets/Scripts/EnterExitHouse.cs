@@ -12,7 +12,7 @@ public class EnterExitHouse : MonoBehaviour
     {
         // This will only activate when the player presses the use-button
 
-        if (other.gameObject.tag == "Player" && Input.GetButton("Use"))
+        if (other.gameObject.tag == "Player" && Input.GetButtonDown("Use"))
         {
             other.gameObject.transform.position = teleport.gameObject.transform.position;
         }
@@ -22,7 +22,7 @@ public class EnterExitHouse : MonoBehaviour
     {
         // This will only activate when the player presses the use-button
 
-        if (other.gameObject.tag == "Player" && Input.GetButton("Use"))
+        if (other.gameObject.tag == "Player" && Input.GetButtonDown("Use"))
         {
             other.gameObject.transform.position = teleport.gameObject.transform.position;
         }
