@@ -8,7 +8,8 @@ public class Sowing : MonoBehaviour
     // Sets the variables we will be using
 
     public bool CarryingSeeds = false;
-    public bool insideField = false;
+    public bool InsideField = false;
+    public bool PlantedSeeds = false;
 
     SeedQuestText QuestText;
     ParticleSystem pSystem;
@@ -30,13 +31,16 @@ public class Sowing : MonoBehaviour
     {
         // The Sowing object will only need to update when the player are inside the sowing field
 
-        if (insideField == false)
+        if (InsideField == false)
             return;
 
         // Tell the text script when we have completed the quest
 
         if (nrOfSeedsPlanted >= 5)
+        {
+            PlantedSeeds = true;
             QuestText.SowedSeeds = true;
+        }
 
         // Mirrors the direction of the seeds according to the x-axis and the direction of which the player is facing
 

@@ -15,12 +15,12 @@ public class CheckForField : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.name == "Field")
-            sowing.insideField = true;
+            sowing.InsideField = true;
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.name == "Field")
-            sowing.insideField = false;
+            sowing.InsideField = false;
     }
 }
