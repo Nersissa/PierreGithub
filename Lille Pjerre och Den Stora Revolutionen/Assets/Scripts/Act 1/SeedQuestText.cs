@@ -12,14 +12,20 @@ public class SeedQuestText : MonoBehaviour
     public bool PickUpSeeds = true;
     public bool SowedSeeds = false;
     public bool SeedPickupPrompt = false;
+    public bool EnterField = false;
+    public bool ClimbLadder = false;
+    public bool EnterHouse = false;
 
     // Sets up the strings of text. These are easily costumizable later on
 
-    private string pickupseeds = "Welcome! Your first mission is to pick up the seeds to your left! \n Good Luck!";
-    private string pickedupseeds = "Now when you have picked up your seeds, start sowing them on the fieldish-looking thing to your right! \n Good Luck!";
-    private string tryingtosowwithoutseeds = "You can't sow yet, you haven't picked up the seeds! \n It's to your left!";
-    private string sowedseeds = "Good Job! \n You Deserve a break. \n walk into your house to rest.";
-    private string seedpickupprompt = "Plocka upp säcken med frön längst bort i ladan!";
+    private string pickupseeds = "-Vilken vacker vårdag!\nIdag passar det utmärkt att så mitt vete inför sommaren.\nStyr mig med piltangenterna så jag kan hämta mina frön uppe på laduloftet åt vänster.";
+    private string seedpickupprompt = "-Säcken med frön jag behöver ligger längst bort i ladan!";
+    private string pickedupseeds = "-Vad bra, nu har jag mina frön!\nStyr mig tillbaka till huset och vidare, till jag kommer till mitt vetefält!";
+    private string enterfield = "-Använd E för att hjälpa mig så mina frön här på fältet!";
+    private string tryingtosowwithoutseeds = "-Jag behöver dock mina frön för att kunna så..\nDe ligger på laduloftet till vänster, styr mig dit så jag kan hämta dem!";
+    private string climbladder = "-Använd piltangenterna för att styra mig upp och ner för stegen till laduloftet!";
+    private string sowedseeds = "-Puh, det var hårt arbete, men nu är det klart!\nStyr mig in i mitt hus, så kan jag gå och lägga mig för dagen.";
+    private string enterhouse = "-För att styra in mig i huset kan du använda E vid dörren här.";
 
     // Sets the time for which how long the text will show
 
@@ -35,19 +41,56 @@ public class SeedQuestText : MonoBehaviour
         // If any is true, it also displays the correct text
 
         if (TryingToSowWithoutSeeds)
+        { 
             ShowText(tryingtosowwithoutseeds, ref TryingToSowWithoutSeeds);
+            PickUpSeeds = false;
+            EnterField = false;
+        }
 
         if (PickedUpSeeds)
+        {
             ShowText(pickedupseeds, ref PickedUpSeeds);
+            SeedPickupPrompt = false;
+        }
 
         if (PickUpSeeds)
             ShowText(pickupseeds, ref PickUpSeeds);
 
         if (SowedSeeds)
+        {
             ShowText(sowedseeds, ref SowedSeeds);
+            EnterField = false;
+        }
 
         if (SeedPickupPrompt)
+        {
             ShowText(seedpickupprompt, ref SeedPickupPrompt);
+            PickUpSeeds = false;
+            ClimbLadder = false;
+        }
+
+        if (EnterField)
+        {
+            ShowText(enterfield, ref EnterField);
+            PickUpSeeds = false;
+        }
+        if (ClimbLadder)
+        {
+            ShowText(climbladder, ref ClimbLadder);
+            PickUpSeeds = false;
+            PickedUpSeeds = false;
+            SeedPickupPrompt = false;
+        }
+        if (EnterHouse)
+        {
+            ShowText(enterhouse, ref EnterHouse);
+            PickUpSeeds = false;
+            TryingToSowWithoutSeeds = false;
+            EnterField = false;
+            ClimbLadder = false;
+            SeedPickupPrompt = false;
+            PickedUpSeeds = false;
+        }
     }
 
     void ShowText(string text, ref bool inputBool)
@@ -58,7 +101,7 @@ public class SeedQuestText : MonoBehaviour
 
         //Sets the area in which the text will be diplayed
 
-        GUILayout.BeginArea(new Rect(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 4, 200, 50));
+        GUILayout.BeginArea(new Rect(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2.5f, 200, 100));
         GUILayout.Label(text);
         GUILayout.EndArea();
 
