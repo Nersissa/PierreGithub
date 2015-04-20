@@ -10,7 +10,6 @@ public class Seagull : MonoBehaviour
     public int minRandYPos = -2;
 
     float speed = 0.01f;
-    float respawnTimer;
     //float originalYPosition;
 
     void Start()
@@ -27,40 +26,41 @@ public class Seagull : MonoBehaviour
             speed *= -1;
         }
     }
-    void OnBecameInvisible()
-    {
-        if (respawnTimer <= 0)
-        {
 
-            //int newPosition = Random.Range(1, 2);
-
-            ////Just change direction and find new Y-position
-
-            //if (newPosition == 1)
-            //{
-            //    transform.Rotate(0, 0, 0);
-            //    FindNewSpeed();
-            //}
-
-            ////Appear at other edge with random Y-position
-
-            //else
-            //{
-            //    transform.position = new Vector3(transform.position.x, Random.Range(0, (int)Camera.main.transform.position.y));
-            //    FindNewSpeed();
-            //}
-        }
-        else
-            respawnTimer += Time.deltaTime;
-    }
     void FixedUpdate()
     {
+        //AmIOutOfBounds();
         Fly();
     }
 
     private void Fly()
     {
         transform.position += new Vector3(speed, 0);
+    }
+    private void AmIOutOfBounds()
+    {
+        //If I am outside camera view, find a new position to appear at.
+
+        if (transform.position.x <= Camera.main.transform.position.x)
+        {
+            int newPosition = Random.Range(1, 2);
+
+            //Just change direction and find new Y-position
+
+            if (newPosition == 1)
+            {
+                transform.Rotate(0, 0, 0);
+                FindNewSpeed();
+            }
+
+            //Appear at other edge with random Y-position
+
+            else
+            {
+                transform.position = new Vector3(transform.position.x, Random.Range(0, (int)Camera.main.transform.position.y));
+                FindNewSpeed();
+            }
+        }
     }
 
     //Find a new speed between 0.01 and 0.005
