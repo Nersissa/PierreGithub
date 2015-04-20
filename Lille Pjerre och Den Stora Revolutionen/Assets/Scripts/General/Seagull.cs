@@ -10,12 +10,14 @@ public class Seagull : MonoBehaviour
     public int minRandYPos = -2;
 
     float speed = 0.01f;
-    //float originalYPosition;
+    float originalYPosition;
+    bool facingLeft;
 
     void Start()
     {
-        //originalYPosition = transform.position.y;
+        originalYPosition = transform.position.y;
 
+        //Find random direction and speed.
         int facing = Random.Range(1, 3);
 
         FindNewSpeed();
@@ -23,44 +25,69 @@ public class Seagull : MonoBehaviour
         if (facing >= 2)
         {
             transform.Rotate(0, 180, 0);
+            facingLeft = true;
             speed *= -1;
         }
     }
 
+    //When the object no longer is in camera view
+
+    void OnBecameInvisible()
+    {
+        Debug.Log("hit");
+
+        int newPosition = Random.Range(1, 3);
+
+        //Reappear at left edge.
+
+        if (newPosition == 1)
+        {
+            if (facingLeft)
+            {
+                transform.Rotate(0, 180, 0);
+                facingLeft = false;
+            }
+            else
+                transform.Rotate(0, 0, 0);
+
+            transform.position = new Vector3(Camera.main.transform.position.x - 12, transform.position.y);
+
+            FindNewSpeed();
+            RandomYPosition();
+
+            if (speed < 0)
+                speed *= -1f;
+        }
+
+        ////Reappear at right edge;
+
+        else
+        {
+            if (!facingLeft)
+            {
+                transform.Rotate(0, 180, 0);
+                facingLeft = true;
+            }
+            else
+                transform.Rotate(0, 0, 0);
+
+            transform.position = new Vector3(Camera.main.transform.position.x + 12, transform.position.y);
+
+            FindNewSpeed();
+            RandomYPosition();
+
+            if (speed > 0)
+                speed *= -1f;
+        }
+    }
     void FixedUpdate()
     {
-        //AmIOutOfBounds();
         Fly();
     }
 
     private void Fly()
     {
         transform.position += new Vector3(speed, 0);
-    }
-    private void AmIOutOfBounds()
-    {
-        //If I am outside camera view, find a new position to appear at.
-
-        if (transform.position.x <= Camera.main.transform.position.x)
-        {
-            int newPosition = Random.Range(1, 2);
-
-            //Just change direction and find new Y-position
-
-            if (newPosition == 1)
-            {
-                transform.Rotate(0, 0, 0);
-                FindNewSpeed();
-            }
-
-            //Appear at other edge with random Y-position
-
-            else
-            {
-                transform.position = new Vector3(transform.position.x, Random.Range(0, (int)Camera.main.transform.position.y));
-                FindNewSpeed();
-            }
-        }
     }
 
     //Find a new speed between 0.01 and 0.005
@@ -71,6 +98,9 @@ public class Seagull : MonoBehaviour
     private void RandomYPosition()
     {
         if (randomYPos)
-            transform.position = new Vector3(transform.position.x, transform.position.y + Random.Range(minRandYPos, maxRandYPos));
+        {
+            transform.position = new Vector3(transform.position.x, originalYPosition + Random.Range(minRandYPos, maxRandYPos));
+            Debug.Log("hit");
+        }
     }
 }
