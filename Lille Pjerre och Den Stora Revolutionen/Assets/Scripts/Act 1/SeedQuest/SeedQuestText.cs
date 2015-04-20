@@ -80,6 +80,7 @@ public class SeedQuestText : MonoBehaviour
             PickUpSeeds = false;
             PickedUpSeeds = false;
             SeedPickupPrompt = false;
+            EnterHouse = false;
         }
         if (EnterHouse)
         {
@@ -90,13 +91,14 @@ public class SeedQuestText : MonoBehaviour
             ClimbLadder = false;
             SeedPickupPrompt = false;
             PickedUpSeeds = false;
+            SowedSeeds = false;
         }
     }
 
     void ShowText(string text, ref bool inputBool)
     {
         //Starts the countdown for how long the text will be displaying
-
+        
         textTimer -= Time.deltaTime;
 
         //Sets the area in which the text will be diplayed
