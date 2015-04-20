@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 44ae985a1b1b3dc48abec396729c9fc8
-timeCreated: 1427656892
+guid: 210464b4b904295459ce624bfab9b96d
+timeCreated: 1429523593
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Building_Straw_Roof_0
-    21300002: Building_Straw_Roof_1
-    21300004: Building_Straw_Roof_2
-    21300006: Building_Straw_Roof_3
-    21300008: Building_Straw_Roof_4
-    21300010: Building_Straw_Roof_5
-    21300012: Building_Straw_Roof_6
-    21300014: Building_Straw_Roof_7
+    21300000: Building_Straw_Roof 1_0
+    21300002: Building_Straw_Roof 1_1
+    21300004: Building_Straw_Roof 1_2
+    21300006: Building_Straw_Roof 1_3
+    21300008: Building_Straw_Roof 1_4
+    21300010: Building_Straw_Roof 1_5
+    21300012: Building_Straw_Roof 1_6
+    21300014: Building_Straw_Roof 1_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -57,17 +57,17 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Building_Straw_Roof_0
+    - name: Building_Straw_Roof 1_0
       rect:
         serializedVersion: 2
-        x: 15
+        x: 19
         y: 4
-        width: 83
+        width: 79
         height: 114
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Building_Straw_Roof_1
+    - name: Building_Straw_Roof 1_1
       rect:
         serializedVersion: 2
         x: 149
@@ -77,7 +77,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Building_Straw_Roof_2
+    - name: Building_Straw_Roof 1_2
       rect:
         serializedVersion: 2
         x: 294
@@ -87,7 +87,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Building_Straw_Roof_3
+    - name: Building_Straw_Roof 1_3
       rect:
         serializedVersion: 2
         x: 692
@@ -97,7 +97,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Building_Straw_Roof_4
+    - name: Building_Straw_Roof 1_4
       rect:
         serializedVersion: 2
         x: 820
@@ -107,7 +107,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Building_Straw_Roof_5
+    - name: Building_Straw_Roof 1_5
       rect:
         serializedVersion: 2
         x: 917
@@ -115,9 +115,9 @@ TextureImporter:
         width: 90
         height: 65
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Building_Straw_Roof_6
+    - name: Building_Straw_Roof 1_6
       rect:
         serializedVersion: 2
         x: 1023
@@ -127,7 +127,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Building_Straw_Roof_7
+    - name: Building_Straw_Roof 1_7
       rect:
         serializedVersion: 2
         x: 1414
