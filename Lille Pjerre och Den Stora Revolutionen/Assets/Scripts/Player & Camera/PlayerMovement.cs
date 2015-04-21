@@ -20,12 +20,10 @@ public class PlayerMovement : MonoBehaviour
 
     float speed = 2;
     float runningSpeed = 4;
+    float moveX, moveY;
 
     bool facingRight = true,
           isRunning = false;
-
-    public bool IsEnabled = true;
-    public float moveX, moveY;
 
     Rigidbody2D rigidBody2D;
     Animator animator;
@@ -49,17 +47,13 @@ public class PlayerMovement : MonoBehaviour
     {
         // Handles Input
 
-        if (!IsEnabled)
-            return;
-        
-            moveY = Input.GetAxis("Vertical");
-            moveX = Input.GetAxis("Horizontal");
+        moveY = Input.GetAxis("Vertical");
+        moveX = Input.GetAxis("Horizontal");
 
-            if (Input.GetKey(KeyCode.LeftShift))
-                isRunning = true;
-            else
-                isRunning = false;
-        
+        if (Input.GetKey(KeyCode.LeftShift))
+            isRunning = true;
+        else
+            isRunning = false;
     }
 
     void FixedUpdate()

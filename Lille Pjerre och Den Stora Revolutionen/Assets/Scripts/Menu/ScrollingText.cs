@@ -88,7 +88,6 @@ public class ScrollingText : MonoBehaviour
                 scenes.LoadScene(ActToLoad, SceneToLoad);
                 fading.Begin(-1);
                 DisplayingText = false;
-                textOffset = 0;
             }
         }
     }
