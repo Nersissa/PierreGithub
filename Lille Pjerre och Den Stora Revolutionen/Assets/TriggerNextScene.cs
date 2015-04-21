@@ -6,19 +6,19 @@ public class TriggerNextScene : MonoBehaviour
     bool tryingToRest = false;
 
     ScrollingText text;
-    SeedQuestText quest;
+    Sowing quest;
 
     void Start()
     {
         text = GameObject.Find("PermObject").GetComponent<ScrollingText>();
-        quest = GameObject.Find("Sowing").GetComponent<SeedQuestText>();
+        quest = GameObject.Find("Sowing").GetComponent<Sowing>();
     }
 
     void Update()
     {
         // We do not need this script unless the player has completed the sowing quest
 
-        if (!quest.SowedSeeds)
+        if (!quest.PlantedSeeds)
             return;
 
         // If the player is close to the bed and trying to rest
