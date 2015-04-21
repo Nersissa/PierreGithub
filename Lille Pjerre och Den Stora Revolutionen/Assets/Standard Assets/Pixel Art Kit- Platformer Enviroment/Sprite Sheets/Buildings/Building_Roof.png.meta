@@ -1,0 +1,141 @@
+fileFormatVersion: 2
+guid: 7cac009cdf7eee04aa5abbd069a59d0d
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Building_Roof_0
+    21300002: Building_Roof_1
+    21300004: Building_Roof_2
+    21300006: Building_Roof_3
+    21300008: Building_Roof_4
+    21300010: Building_Roof_5
+    21300012: Building_Roof_6
+    21300014: Building_Roof_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Building_Roof_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 9
+        width: 84
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Roof_1
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 10
+        width: 90
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Roof_2
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 10
+        width: 380
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Roof_3
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 7
+        width: 84
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Roof_4
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 32
+        width: 57
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Roof_5
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 32
+        width: 92
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Roof_6
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 32
+        width: 380
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Building_Roof_7
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 32
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
