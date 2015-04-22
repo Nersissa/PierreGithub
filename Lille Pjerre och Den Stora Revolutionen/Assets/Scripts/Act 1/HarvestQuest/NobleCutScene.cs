@@ -10,6 +10,8 @@ public class NobleCutScene : MonoBehaviour
 
     PlayerMovement playermove;
     NobleManDialogue dialogue;
+    HarvestQuestText questText;
+    Sickle sicklePickup;
 
     Rigidbody2D body;
     Rigidbody2D playerbody;
@@ -18,6 +20,8 @@ public class NobleCutScene : MonoBehaviour
     {
         playermove = GameObject.Find("Player").GetComponent<PlayerMovement>();
         playerbody = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+        sicklePickup = GameObject.Find("Sickle").GetComponent<Sickle>();
+        questText = GameObject.Find("HarvestQuest").GetComponent<HarvestQuestText>();
 
         dialogue = GetComponent<NobleManDialogue>();
         body = GetComponent<Rigidbody2D>();
@@ -31,6 +35,8 @@ public class NobleCutScene : MonoBehaviour
         yield return new WaitForSeconds(2);
         playermove.IsEnabled = true;
         Destroy(gameObject);
+        questText.PickUpSickle = true;
+        sicklePickup.canPickUpSickle = true;
     }
 
     void Update()

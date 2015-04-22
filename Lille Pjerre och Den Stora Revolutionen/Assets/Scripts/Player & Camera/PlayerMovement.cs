@@ -6,7 +6,6 @@ using System.Collections;
 public enum PlayerState
 {
     neutral,
-    carryingSeeds,
     climbing,
 }
 
