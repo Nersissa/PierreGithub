@@ -4,12 +4,14 @@ using System.Collections;
 public class Sickle : MonoBehaviour
 {
     HarvestQuestText harvestQuestText;
+    Harvest harvestQuest;
 
     public bool canPickUpSickle;
 
     void Start()
     {
         harvestQuestText = GameObject.Find("HarvestQuest").GetComponent<HarvestQuestText>();
+        harvestQuest = GameObject.Find("Field").GetComponent<Harvest>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -25,7 +27,7 @@ public class Sickle : MonoBehaviour
                 Destroy(gameObject);
 
                 harvestQuestText.PickedUpSickle = true;
-
+                harvestQuest.carryingSickle = true;
             } 
         }
     }

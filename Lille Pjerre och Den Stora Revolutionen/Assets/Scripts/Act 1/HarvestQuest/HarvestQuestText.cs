@@ -10,12 +10,14 @@ public class HarvestQuestText : MonoBehaviour
     public bool StartingUp = true;
     public bool PickUpSickle = false;
     public bool PickedUpSickle = false;
+    public bool FinishedHarvest = false;
 
     // Sets up the strings of text. These are easily costumizable later on
 
     private string startingup = "-Jag undrar när landshorsjäveln kommer. \n Skörden börjar se förjävla bra ut. \n Fan nu vill jag ut och skörda.";
-    private string pickupsickle = "-Det är väl bara att sätta igång. Först får jag gå och hämta min skära som hänger på laduloftet.";
+    private string pickupsickle = "-Det är väl bara att sätta igång.\nFörst får jag gå och hämta min skära som hänger på laduloftet.";
     private string pickedupsickle = "-Sådär, nu kan jag börja skörda adelsmannens vete.";
+    private string finishedharvest = "-Då var jag färdig med ett fält.\nMin skära är dock väldigt dålig.\nJag borde nog ta mig till byn och köpa en ny innan jag fortsätter.";
 
 
     // Sets the time for which how long the text will show
@@ -41,6 +43,10 @@ public class HarvestQuestText : MonoBehaviour
         if (PickedUpSickle)
         {
             ShowText(pickedupsickle, ref PickedUpSickle);
+        }
+        if (FinishedHarvest)
+        {
+            ShowText(finishedharvest, ref FinishedHarvest);
         }
 
         // Special function for the conversation with the nobleman
