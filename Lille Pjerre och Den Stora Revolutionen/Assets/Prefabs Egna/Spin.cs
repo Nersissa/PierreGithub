@@ -3,14 +3,13 @@ using System.Collections;
 
 public class Spin : MonoBehaviour {
 
-	// Use this for initialization
+    public float rotationSpeed = -1;
 	void Start () {
 	
 	}
 	
-	// Update is called once per frame
 	void Update () {
 
-        transform.Rotate(new Vector3(0, 0, -1));
+        transform.Rotate(new Vector3(0, 0, rotationSpeed));
 	}
 }
