@@ -56,6 +56,7 @@ public class NobleCutScene : MonoBehaviour
                 playermove.moveX = 0;
                 dialogue.HavingDialogue = true;
                 movingPlayer = false;
+                
             }
         }
 
@@ -75,5 +76,6 @@ public class NobleCutScene : MonoBehaviour
 
         playermove.IsEnabled = false;
         movingPlayer = true;
+        questText.StartingUp = false;
     }
 }

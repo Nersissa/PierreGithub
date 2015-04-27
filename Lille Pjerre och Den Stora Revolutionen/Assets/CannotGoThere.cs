@@ -6,6 +6,7 @@ public class CannotGoThere : MonoBehaviour
     private float textTimer = 10;
 
     private bool collide;
+    public bool canGoThere;
 
     void Start()
     {
@@ -34,7 +35,7 @@ public class CannotGoThere : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name == "Player")
+        if (other.name == "Player" && !canGoThere)
         {
             collide = true;
         }

@@ -15,7 +15,7 @@ public class HarvestQuestText : MonoBehaviour
     // Sets up the strings of text. These are easily costumizable later on
 
     private string startingup = "-Jag undrar när landshorsjäveln kommer. \n Skörden börjar se förjävla bra ut. \n Fan nu vill jag ut och skörda.";
-    private string pickupsickle = "-Det är väl bara att sätta igång.\nFörst får jag gå och hämta min skära som hänger på laduloftet.";
+    private string pickupsickle = "-Förhoppningsvis blir det något över till mig..\nJag får sätta igång direkt. Först måste jag hämta min skära uppe på laduloftet.";
     private string pickedupsickle = "-Sådär, nu kan jag börja skörda adelsmannens vete.";
     private string finishedharvest = "-Då var jag färdig med ett fält.\nMin skära är dock väldigt dålig.\nJag borde nog ta mig till byn och köpa en ny innan jag fortsätter.";
 
@@ -62,7 +62,7 @@ public class HarvestQuestText : MonoBehaviour
 
         // Sets the area in which the text will be diplayed
 
-        GUILayout.BeginArea(new Rect(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 4, 1000, 1000));
+        GUILayout.BeginArea(new Rect(575, Camera.main.pixelHeight / 4, 1000, 1000));
         GUILayout.Label(text);
         GUILayout.EndArea();
 

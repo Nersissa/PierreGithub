@@ -13,10 +13,13 @@ public class NobleManDialogue : MonoBehaviour
     public bool HavingDialogue = false;
 
     private string[] Dialogue = {
-                                    "Pierre! Var god kom hit en stund!", 
-                                    "Nu är det dags för dig att skörda, \n senast imorgon vill jag ha min skörd!",
-                                    "Absolut chefen, jag sätter igång direkt",
-                                    "Jag kommer tillbaka om fem dagar för att se så det har gått bra, \n fem dagsverk ska jag ha!" };
+                                    "-Pierre! Jag vill tala med dig!", 
+                                    "-Vad kan jag göra för er monsieur?",
+                                    "-Som du är väl medveten om är det min mark du hyr och odlar vete på.\nJag har därför kommit för att kräva in min del av skörden,\nsom en del av betalningen för detta.",
+                                    "-Snälla monsieur, det har varit en torr vår och skördar jag ditt vete\nså har jag knappt kvar till mig själv sen, än mindre till att sälja på marknaden!\nKan jag inte slippa detta elände, bara i år? Jag lovar att du får dubbel skörd nästa år!",
+                                "-Kommer inte på fråga! Och glöm inte att betala skatt heller.\nDu var sen med förra betalningen. Så svårt kan det inte vara!",
+                                "-Lätt för dig att säga, som aldrig har behövt arbeta eller betala en livre i skatt i hela ditt liv!\nMedan bönder som jag måste slita OCH betala både skatt och spannmål till er adelsmän.",
+                                "-Du ska vakta din tunga, bonde, det är jag som bestämmer här.\nJag vill att du sätter igång direkt, för nu måste jag iväg till granngården\noch hämta mina ärtor." };
 
     // Use this for initialization
     void Start()
@@ -39,7 +42,11 @@ public class NobleManDialogue : MonoBehaviour
 
         // Displays the text area
 
-        GUILayout.BeginArea(new Rect(0, Camera.main.pixelHeight / 4, 1000, 1000));
+        if (dialogueNumber == 0 || dialogueNumber == 2 || dialogueNumber == 4 || dialogueNumber == 6)
+            GUILayout.BeginArea(new Rect(900, Camera.main.pixelHeight / 4, 1000, 1000));
+        else
+            GUILayout.BeginArea(new Rect(575, Camera.main.pixelHeight / 4, 1000, 1000));
+
         GUILayout.Label(Dialogue[dialogueNumber]);
         GUILayout.EndArea();
 
@@ -56,7 +63,7 @@ public class NobleManDialogue : MonoBehaviour
                 StartCoroutine(cutscene.EndCutScene());
             }
 
-            dialogueTimer = 5;
+            dialogueTimer = 15;
         }
     }
 }
