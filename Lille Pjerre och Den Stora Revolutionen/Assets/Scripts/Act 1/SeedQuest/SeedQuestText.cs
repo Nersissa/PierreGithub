@@ -36,6 +36,17 @@ public class SeedQuestText : MonoBehaviour
         if (TryingToSowWithoutSeeds)
             TryDialogue(ref TryingToSowWithoutSeeds, tryingtosowwithoutseeds);
 
+        if (PickUpSeeds)
+            TryDialogue(ref PickUpSeeds, pickupseeds);
+
+        if (PickedUpSeeds)
+            TryDialogue(ref PickedUpSeeds, pickedupseeds);
+
+        if (SowedSeeds)
+            TryDialogue(ref SowedSeeds, sowedseeds);
+
+        if (SeedPickupPrompt)
+            TryDialogue(ref SeedPickupPrompt, seedpickupprompt);
 
     }
 

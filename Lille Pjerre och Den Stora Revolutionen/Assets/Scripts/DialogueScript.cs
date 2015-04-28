@@ -5,13 +5,15 @@ public class DialogueScript : MonoBehaviour
 {
     // Variables
 
-    GUIStyle textStyle;
-
-    Rect DialogueBox;
+    public Texture2D TextBackground;
 
     public Font font;
 
     public bool IsTalking = false;
+
+    GUIStyle textStyle;
+
+    Rect DialogueBox;
 
     bool NextPersonTalk = false;
     bool MoreTextComing = false;
@@ -33,14 +35,11 @@ public class DialogueScript : MonoBehaviour
 
         textStyle.font = font;
 
-        // Since we have limited space and background
-        // We want a custom colour and wrap the words
-
         textStyle.normal.textColor = Color.white;
         textStyle.wordWrap = true;
 
-        boxWidth = Screen.width / 5;
-        boxHeight = Screen.height / 8;
+        boxWidth = 450;
+        boxHeight = 150;
 
         DialogueBox = new Rect(Screen.width / 2 - boxWidth / 2, Screen.height - boxHeight, boxWidth, boxHeight);
     }
@@ -64,9 +63,10 @@ public class DialogueScript : MonoBehaviour
 
     void OnGUI()
     {
-        textStyle.normal.textColor = Color.white;
-        GUI.backgroundColor = Color.black;
-        GUILayout.BeginArea(DialogueBox);
+        if (!IsTalking)
+            return;
+
+        GUILayout.BeginArea(DialogueBox, TextBackground);
         GUILayout.Box(TalkingPerson + DisplayingText, textStyle);
         GUILayout.EndArea();
     }
@@ -143,7 +143,7 @@ public class DialogueScript : MonoBehaviour
 
     IEnumerator WaitForEnd()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
         IsTalking = false;
     }
 
