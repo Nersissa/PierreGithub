@@ -15,6 +15,7 @@ public class PickupPromptTrigger : MonoBehaviour
         if (other.name == "Player")
         {
             QuestText.SeedPickupPrompt = true;
+            Destroy(gameObject);
         }
 	}
 }

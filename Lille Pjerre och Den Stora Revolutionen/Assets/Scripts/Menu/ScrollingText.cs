@@ -52,6 +52,11 @@ public class ScrollingText : MonoBehaviour
         if (!DisplayingText)
             return;
 
+        if (Input.GetKey(KeyCode.Space))
+            ScrollingSpeed = 100;
+        else
+            ScrollingSpeed = 30;
+
         // Handles the scrolling
 
         textOffset -= (Time.deltaTime * ScrollingSpeed);

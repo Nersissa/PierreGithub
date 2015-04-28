@@ -40,7 +40,7 @@ public class Sowing : MonoBehaviour
         {
             PlantedSeeds = true;
             QuestText.SowedSeeds = true;
-            nrOfSeedsPlanted = 0;
+            enabled = false;
         }
 
         // Mirrors the direction of the seeds according to the x-axis and the direction of which the player is facing

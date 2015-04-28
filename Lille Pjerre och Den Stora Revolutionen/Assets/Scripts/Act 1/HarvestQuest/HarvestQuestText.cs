@@ -6,7 +6,7 @@ public class HarvestQuestText : MonoBehaviour
     #region Variables
 
     public Font font;
-    
+
     // Sets up the bools we will be needing for display different textmessages
 
     public bool StartingUp = true;
@@ -16,18 +16,18 @@ public class HarvestQuestText : MonoBehaviour
 
     // Sets up the strings of text. These are easily costumizable later on
 
-    private string startingup = "-Jag undrar när landshorsjäveln kommer. \n Skörden börjar se förjävla bra ut. \n Fan nu vill jag ut och skörda.";
-    private string pickupsickle = "-Förhoppningsvis blir det något över till mig..\nJag får sätta igång direkt. Först måste jag hämta min skära uppe på laduloftet.";
-    private string pickedupsickle = "-Sådär, nu kan jag börja skörda adelsmannens vete.";
-    private string finishedharvest = "-Då var jag färdig med ett fält.\nMin skära är dock väldigt dålig.\nJag borde nog ta mig till byn och köpa en ny innan jag fortsätter.";
+    private string[] startingup = { "Pierre: -Jag undrar när landshorsjäveln kommer. Skörden börjar se förjävla bra ut. Fan nu vill jag ut och skörda." };
+    private string[] pickupsickle = { "Pierre: -Förhoppningsvis blir det något över till mig.. Jag får sätta igång direkt. Först måste jag hämta min skära uppe på laduloftet." };
+    private string[] pickedupsickle = { "Pierre: -Sådär, nu kan jag börja skörda adelsmannens vete." };
+    private string[] finishedharvest = { "Pierre: -Då var jag färdig med ett fält. Min skära är dock väldigt dålig. Jag borde nog ta mig till byn och köpa en ny innan jag fortsätter." };
 
 
-    // Sets the time for which how long the text will show
+    DialogueScript dialogue;
 
-    private float textTimer = 10;
-
-    private GUIStyle style;
-
+    void Start()
+    {
+        dialogue = GameObject.Find("PermObject").GetComponent<DialogueScript>();
+    }
 
     #endregion
     #region TextManagement
@@ -39,18 +39,18 @@ public class HarvestQuestText : MonoBehaviour
         // If any is true, it also displays the correct text
 
         if (StartingUp)
-            ShowText(startingup, ref StartingUp);
+            TryDialogue(ref StartingUp, startingup);
         if (PickUpSickle)
         {
-            ShowText(pickupsickle, ref PickUpSickle);
+            TryDialogue(ref PickUpSickle, pickupsickle);
         }
         if (PickedUpSickle)
         {
-            ShowText(pickedupsickle, ref PickedUpSickle);
+            TryDialogue(ref PickedUpSickle, pickedupsickle);
         }
         if (FinishedHarvest)
         {
-            ShowText(finishedharvest, ref FinishedHarvest);
+            TryDialogue(ref FinishedHarvest, finishedharvest);
         }
 
         // Special function for the conversation with the nobleman
@@ -58,38 +58,20 @@ public class HarvestQuestText : MonoBehaviour
 
     }
 
-    void ShowText(string text, ref bool inputBool)
+    void TryDialogue(ref bool InputBool, string[] text)
     {
-        style = new GUIStyle(GUI.skin.label);
-
-        style.font = font;
-
-        style.fontSize = 14;
-
-        style.normal.textColor = Color.white;
-
-        // Starts the countdown for how long the text will be displaying
-
-        textTimer -= Time.deltaTime;
-
-        // Sets the area in which the text will be diplayed
-
-        GUILayout.BeginArea(new Rect(575, Camera.main.pixelHeight / 4, 1000, 1000));
-        GUILayout.Label(text, style);
-        GUILayout.EndArea();
-
-        // When the timer reaches zero, it resets the timer
-        // and turns the bool to false so it isn't called repeatedly
-
-        if (textTimer <= 0)
+        if (InputBool)
         {
-            inputBool = false;
-            textTimer = 10;
+            if (!dialogue.IsTalking)
+            {
+                dialogue.StartDialogue(text);
 
+                InputBool = false;
+            }
+            else
+                InputBool = false;
         }
     }
-
-
 
     #endregion
 }
