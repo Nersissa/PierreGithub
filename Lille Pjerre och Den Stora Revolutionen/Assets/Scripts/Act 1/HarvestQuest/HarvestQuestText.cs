@@ -5,6 +5,8 @@ public class HarvestQuestText : MonoBehaviour
 {
     #region Variables
 
+    public Font font;
+    
     // Sets up the bools we will be needing for display different textmessages
 
     public bool StartingUp = true;
@@ -23,6 +25,8 @@ public class HarvestQuestText : MonoBehaviour
     // Sets the time for which how long the text will show
 
     private float textTimer = 10;
+
+    private GUIStyle style;
 
 
     #endregion
@@ -56,6 +60,14 @@ public class HarvestQuestText : MonoBehaviour
 
     void ShowText(string text, ref bool inputBool)
     {
+        style = new GUIStyle(GUI.skin.label);
+
+        style.font = font;
+
+        style.fontSize = 14;
+
+        style.normal.textColor = Color.white;
+
         // Starts the countdown for how long the text will be displaying
 
         textTimer -= Time.deltaTime;
@@ -63,7 +75,7 @@ public class HarvestQuestText : MonoBehaviour
         // Sets the area in which the text will be diplayed
 
         GUILayout.BeginArea(new Rect(575, Camera.main.pixelHeight / 4, 1000, 1000));
-        GUILayout.Label(text);
+        GUILayout.Label(text, style);
         GUILayout.EndArea();
 
         // When the timer reaches zero, it resets the timer
