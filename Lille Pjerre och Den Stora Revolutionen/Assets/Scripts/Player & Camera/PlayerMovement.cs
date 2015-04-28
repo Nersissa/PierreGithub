@@ -23,8 +23,8 @@ public class PlayerMovement : MonoBehaviour
     bool facingRight = true,
           isRunning = false;
 
-    public bool IsEnabled = true;
-    public float moveX, moveY;
+    bool IsEnabled = true;
+    float moveX, moveY;
 
     Rigidbody2D rigidBody2D;
     Animator animator;
@@ -50,15 +50,38 @@ public class PlayerMovement : MonoBehaviour
 
         if (!IsEnabled)
             return;
-        
-            moveY = Input.GetAxis("Vertical");
-            moveX = Input.GetAxis("Horizontal");
 
-            if (Input.GetKey(KeyCode.LeftShift))
-                isRunning = true;
-            else
-                isRunning = false;
-        
+        moveY = Input.GetAxis("Vertical");
+        moveX = Input.GetAxis("Horizontal");
+
+        if (Input.GetKey(KeyCode.LeftShift))
+            isRunning = true;
+        else
+            isRunning = false;
+
+    }
+
+    public void Disable()
+    {
+        IsEnabled = false;
+        moveX = 0;
+        moveY = 0;
+        isRunning = false;
+    }
+
+    public void Enable()
+    {
+        IsEnabled = true;
+    }
+
+    public void MoveHorizontal(float direction, bool running = false)
+    {
+        moveX = direction;
+    }
+
+    public void MoveVertical(float direction)
+    {
+        moveY = direction;
     }
 
     void FixedUpdate()

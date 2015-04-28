@@ -99,7 +99,6 @@ public class Seagull : MonoBehaviour
         if (randomYPos)
         {
             transform.position = new Vector3(transform.position.x, originalYPosition + Random.Range(minRandYPos, maxRandYPos));
-            Debug.Log("hit");
         }
     }
 }

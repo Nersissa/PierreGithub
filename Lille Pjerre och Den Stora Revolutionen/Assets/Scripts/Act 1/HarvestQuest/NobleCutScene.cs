@@ -9,12 +9,17 @@ public class NobleCutScene : MonoBehaviour
     private bool movingPlayer = false;
 
     PlayerMovement playermove;
-    NobleManDialogue dialogue;
+    DialogueScript dialogue;
     HarvestQuestText questText;
     Sickle sicklePickup;
 
     Rigidbody2D body;
     Rigidbody2D playerbody;
+
+    private string[] Dialogue = {
+                                    "Adelsman: Nu är det dags för dig att skörda",
+                                    "Pierre: Absolut chefen, jag sätter igång direkt",
+                                    "Adelsman: Jag kommer tillbaka om fem dagar för att se så det har gått bra, fem dagsverk ska jag ha!" };
 
     void Start()
     {
@@ -23,7 +28,7 @@ public class NobleCutScene : MonoBehaviour
         sicklePickup = GameObject.Find("Sickle").GetComponent<Sickle>();
         questText = GameObject.Find("HarvestQuest").GetComponent<HarvestQuestText>();
 
-        dialogue = GetComponent<NobleManDialogue>();
+        dialogue = GameObject.Find("PermObject").GetComponent<DialogueScript>();
         body = GetComponent<Rigidbody2D>();
     }
 
@@ -33,7 +38,7 @@ public class NobleCutScene : MonoBehaviour
     {
         movingRight = true;
         yield return new WaitForSeconds(2);
-        playermove.IsEnabled = true;
+        playermove.Enable();
         Destroy(gameObject);
         questText.PickUpSickle = true;
         sicklePickup.canPickUpSickle = true;
@@ -48,15 +53,14 @@ public class NobleCutScene : MonoBehaviour
             // But only if they are far away from eachother
 
             if (Vector2.Distance(playerbody.position, body.position) > 2)
-                playermove.moveX = 1;
+                playermove.MoveHorizontal(1);
             else
             {
                 // When the player gets close we can start the dialogue
 
-                playermove.moveX = 0;
-                dialogue.HavingDialogue = true;
+                playermove.MoveHorizontal(0);
+                dialogue.StartDialogue(Dialogue);
                 movingPlayer = false;
-                
             }
         }
 
@@ -74,8 +78,7 @@ public class NobleCutScene : MonoBehaviour
         // Disables playermovement
         // Allows us to alter player's position
 
-        playermove.IsEnabled = false;
+        playermove.Disable();
         movingPlayer = true;
-        questText.StartingUp = false;
     }
 }
