@@ -5,6 +5,9 @@ public class MenuButtonsFactory : MonoBehaviour
 {
     #region Variables
 
+    public Font font;
+    GUIStyle style;
+
     enum ScreenState
     {
         StartScreen,
@@ -43,24 +46,28 @@ public class MenuButtonsFactory : MonoBehaviour
 
     void OnGUI()
     {
+        style = new GUIStyle(GUI.skin.button);
+
+        style.font = font;
+
         switch (state)
         {
             case ScreenState.StartScreen:
 
-                if (GUI.Button(new Rect(topButtonX, topButtonY, buttonWidth, buttonHeight), "Play From Start"))
+                if (GUI.Button(new Rect(topButtonX, topButtonY, buttonWidth, buttonHeight), "Play From Start", style))
                     introText.Display(1, 1, this);
 
-                if (GUI.Button(new Rect(topButtonX, topButtonY + buttonHeight * 2, buttonWidth, buttonHeight), "Choose Act"))
+                if (GUI.Button(new Rect(topButtonX, topButtonY + buttonHeight * 2, buttonWidth, buttonHeight), "Choose Act", style))
                     state = ScreenState.ActScreen;
 
 
                 break;
             case ScreenState.ActScreen:
 
-                if (GUI.Button(new Rect(10, 10, 100, 50), "Go Back"))
+                if (GUI.Button(new Rect(10, 10, 100, 50), "Go Back", style))
                     state = ScreenState.StartScreen;
 
-                if (GUI.Button(new Rect(topButtonX, topButtonY, buttonWidth, buttonHeight), "Act Two"))
+                if (GUI.Button(new Rect(topButtonX, topButtonY, buttonWidth, buttonHeight), "Act Two", style))
                     introText.Display(2, 1, this);
 
                 break;

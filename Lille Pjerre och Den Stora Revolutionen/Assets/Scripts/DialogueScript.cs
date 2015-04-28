@@ -9,6 +9,8 @@ public class DialogueScript : MonoBehaviour
 
     Rect DialogueBox;
 
+    public Font font;
+
     public bool IsTalking = false;
 
     bool NextPersonTalk = false;
@@ -28,6 +30,8 @@ public class DialogueScript : MonoBehaviour
         // Sets up our own style
 
         textStyle = new GUIStyle();
+
+        textStyle.font = font;
 
         // Since we have limited space and background
         // We want a custom colour and wrap the words
@@ -60,6 +64,7 @@ public class DialogueScript : MonoBehaviour
 
     void OnGUI()
     {
+        textStyle.normal.textColor = Color.white;
         GUI.backgroundColor = Color.black;
         GUILayout.BeginArea(DialogueBox);
         GUILayout.Box(TalkingPerson + DisplayingText, textStyle);
