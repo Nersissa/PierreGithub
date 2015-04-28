@@ -34,7 +34,6 @@ public class Seagull : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        Debug.Log("hit");
 
         int newPosition = Random.Range(1, 3);
 

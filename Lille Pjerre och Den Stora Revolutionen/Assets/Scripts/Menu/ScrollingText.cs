@@ -5,6 +5,7 @@ using System.IO;
 public class ScrollingText : MonoBehaviour
 {
     // The varibles we will be using
+    public Font font;
 
     bool DisplayingText = false;
 
@@ -34,6 +35,8 @@ public class ScrollingText : MonoBehaviour
         // Creates the GUI we will be using during the scrolling text
 
         style = new GUIStyle();
+
+        style.font = font;
 
         style.fontSize = 20;
 
