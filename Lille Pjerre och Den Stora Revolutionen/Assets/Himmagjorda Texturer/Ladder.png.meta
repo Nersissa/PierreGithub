@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 10da476f1029c9b4d97415082adc3b68
-timeCreated: 1430219485
+guid: b2bd6ac6f52ebeb419605754ff6ed134
+timeCreated: 1430218879
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Sickle_0
-    21300002: Sickle_1
+    21300000: Ladder_0
+    21300002: Ladder_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -51,23 +51,23 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Sickle_0
+    - name: Ladder_0
       rect:
         serializedVersion: 2
         x: 0
         y: 1
-        width: 20
-        height: 41
+        width: 31
+        height: 178
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sickle_1
+    - name: Ladder_1
       rect:
         serializedVersion: 2
-        x: 21
+        x: 36
         y: 0
-        width: 22
-        height: 43
+        width: 33
+        height: 180
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
