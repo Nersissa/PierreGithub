@@ -7,6 +7,7 @@ public class NobleCutScene : MonoBehaviour
 
     private bool movingRight = false;
     private bool movingPlayer = false;
+    private bool startedTalking = false;
 
     PlayerMovement playermove;
     DialogueScript dialogue;
@@ -17,9 +18,13 @@ public class NobleCutScene : MonoBehaviour
     Rigidbody2D playerbody;
 
     private string[] Dialogue = {
-                                    "Adelsman: Nu är det dags för dig att skörda",
-                                    "Pierre: Absolut chefen, jag sätter igång direkt",
-                                    "Adelsman: Jag kommer tillbaka om fem dagar för att se så det har gått bra, fem dagsverk ska jag ha!" };
+                                    "Adelsman: -Pierre! Jag vill tala med dig!", 
+                                    "Pierre: -Vad kan jag göra för er monsieur?",
+                                    "Adelsman: -Som du är väl medveten om är det min mark du hyr och odlar vete på.\nJag har därför kommit för att kräva in min del av skörden,\nsom en del av betalningen för detta.",
+                                    "Pierre: -Snälla monsieur, det har varit en torr vår och skördar jag ditt vete\nså har jag knappt kvar till mig själv sen, än mindre till att sälja på marknaden!\nKan jag inte slippa detta elände, bara i år? Jag lovar att du får dubbel skörd nästa år!",
+                                "Adelsman: -Kommer inte på fråga! Och glöm inte att betala skatt heller.\nDu var sen med förra betalningen. Så svårt kan det inte vara!",
+                                "Pierre: -Lätt för dig att säga, som aldrig har behövt arbeta eller betala en livre i skatt i hela ditt liv!\nMedan bönder som jag måste slita OCH betala både skatt och spannmål till er adelsmän.",
+                                "Adelsman: -Du ska vakta din tunga, bonde, det är jag som bestämmer här.\nJag vill att du sätter igång direkt, för nu måste jag iväg till granngården\noch hämta mina ärtor." };
 
     void Start()
     {
@@ -60,8 +65,15 @@ public class NobleCutScene : MonoBehaviour
 
                 playermove.MoveHorizontal(0);
                 dialogue.StartDialogue(Dialogue);
+                startedTalking = true;
                 movingPlayer = false;
             }
+        }
+
+        if (!dialogue.IsTalking && startedTalking)
+        {
+            StartCoroutine(EndCutScene());
+            startedTalking = false;
         }
 
         if (movingRight)
