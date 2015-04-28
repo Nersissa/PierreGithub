@@ -11,7 +11,7 @@ public class ScrollingText : MonoBehaviour
 
     ArrayList Text;
 
-    float ScrollingSpeed = 50;
+    float ScrollingSpeed = 15;
     float textOffset = 0;
 
     int ActToLoad;
