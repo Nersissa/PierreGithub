@@ -8,6 +8,7 @@ public class NobleCutScene : MonoBehaviour
     private bool movingRight = false;
     private bool movingPlayer = false;
     private bool startedTalking = false;
+    private bool facingLeft = true;
 
     PlayerMovement playermove;
     DialogueScript dialogue;
@@ -16,6 +17,7 @@ public class NobleCutScene : MonoBehaviour
 
     Rigidbody2D body;
     Rigidbody2D playerbody;
+
 
     private string[] Dialogue = {
                                     "ADELSMAN: -PIERRE! JAG VILL TALA MED DIG!", 
@@ -35,6 +37,7 @@ public class NobleCutScene : MonoBehaviour
 
         dialogue = GameObject.Find("PermObject").GetComponent<DialogueScript>();
         body = GetComponent<Rigidbody2D>();
+
     }
 
     // The nobleman needs some time to get away from pierre
@@ -77,7 +80,12 @@ public class NobleCutScene : MonoBehaviour
         }
 
         if (movingRight)
-            body.velocity = new Vector2(5, 0);
+        {
+            body.velocity = new Vector2(1, 0);            
+        }
+
+        if (body.velocity.x > 0 && facingLeft)
+            Flip();
     }
 
     void FixedUpdate()
@@ -92,5 +100,14 @@ public class NobleCutScene : MonoBehaviour
 
         playermove.Disable();
         movingPlayer = true;
+    }
+
+    void Flip()
+    {
+        // Mirrors the animation image of you change direction
+        facingLeft = !facingLeft;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }
