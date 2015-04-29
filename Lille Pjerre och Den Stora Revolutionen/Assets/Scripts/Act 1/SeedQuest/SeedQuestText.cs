@@ -15,11 +15,12 @@ public class SeedQuestText : MonoBehaviour
 
     // Sets up the strings of text. These are easily costumizable later on
 
-    private string[] pickupseeds = { "Pierre: -Vilken vacker vårdag! Idag passar det utmärkt att så mitt vete inför sommaren. Styr mig med piltangenterna så jag kan hämta mina frön uppe på laduloftet åt vänster." };
-    private string[] seedpickupprompt = { "Pierre: -Säcken med frön jag behöver ligger längst bort i ladan!" };
-    private string[] pickedupseeds = { "Pierre: -Vad bra, nu har jag mina frön! Styr mig tillbaka till huset och vidare, till jag kommer till mitt vetefält!" };
-    private string[] tryingtosowwithoutseeds = { "Pierre: -Jag behöver dock mina frön för att kunna så.. De ligger på laduloftet till vänster, styr mig dit så jag kan hämta dem!" };
-    private string[] sowedseeds = { "Pierre: -Puh, det var hårt arbete, men nu är det klart!\nStyr mig in i mitt hus, så kan jag gå och lägga mig för dagen." };
+
+    private string[] pickupseeds = { "PIERRE: -VILKEN VACKER VÅRDAG! IDAG PASSAR DET UTMÄRKT ATT SÅ MITT VETE INFÖR SOMMAREN. STYR MIG MED PILTANGENTERNA SÅ JAG KAN HÄMTA MINA FRÖN LÄNGST BORT I LADULOFTET." };
+    private string[] seedpickupprompt = { "PIERRE: -SÄCKEN MED FRÖN JAG BEHÖVER LIGGER LÄNGST BORT I LADAN!" };
+    private string[] pickedupseeds = { "PIERRE: -VAD BRA, NU HAR JAG MINA FRÖN! STYR MIG TILLBAKA TILL HUSET OCH VIDARE, SÅ JAG KAN SÅ MIN VETE!" };
+    private string[] tryingtosowwithoutseeds = { "PIERRE: -JAG BEHÖVER DOCK MINA FRÖN FÖR ATT KUNNA SÅ.. DE LIGGER PÅ LADULOFTET TILL VÄNSTER, STYR MIG DIT SÅ JAG KAN HÄMTA DEM!" };
+    private string[] sowedseeds = { "PIERRE: -PUH, DET VAR HÅRT ARBETE, MEN NU ÄR DET KLART!\nSTYR MIG IN I MITT HUS, SÅ KAN JAG GÅ OCH LÄGGA MIG FÖR DAGEN." };
 
     private DialogueScript dialogue;
 

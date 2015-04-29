@@ -11,7 +11,9 @@ public class ScrollingText : MonoBehaviour
 
     ArrayList Text;
 
-    float ScrollingSpeed = 15;
+   
+    public float ScrollingSpeed = 15;
+    float originalScrollSpeed;
     float textOffset = 0;
 
     int ActToLoad;
@@ -26,6 +28,8 @@ public class ScrollingText : MonoBehaviour
     {
         fading = GetComponent<FadingScript>();
         scenes = GetComponent<Scenes>();
+
+        originalScrollSpeed = ScrollingSpeed;
 
         AdjustStyle();
     }
@@ -42,7 +46,7 @@ public class ScrollingText : MonoBehaviour
 
         style.fontStyle = FontStyle.Normal;
 
-        style.normal.textColor = Color.red;
+        style.normal.textColor = Color.yellow;
     }
 
     void OnGUI()
@@ -55,7 +59,7 @@ public class ScrollingText : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
             ScrollingSpeed = 100;
         else
-            ScrollingSpeed = 30;
+            ScrollingSpeed = originalScrollSpeed;
 
         // Handles the scrolling
 

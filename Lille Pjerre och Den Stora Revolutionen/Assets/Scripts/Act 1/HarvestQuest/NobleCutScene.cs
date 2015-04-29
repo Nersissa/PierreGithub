@@ -18,13 +18,13 @@ public class NobleCutScene : MonoBehaviour
     Rigidbody2D playerbody;
 
     private string[] Dialogue = {
-                                    "Adelsman: -Pierre! Jag vill tala med dig!", 
-                                    "Pierre: -Vad kan jag göra för er monsieur?",
-                                    "Adelsman: -Som du är väl medveten om är det min mark du hyr och odlar vete på.\nJag har därför kommit för att kräva in min del av skörden,\nsom en del av betalningen för detta.",
-                                    "Pierre: -Snälla monsieur, det har varit en torr vår och skördar jag ditt vete\nså har jag knappt kvar till mig själv sen, än mindre till att sälja på marknaden!\nKan jag inte slippa detta elände, bara i år? Jag lovar att du får dubbel skörd nästa år!",
-                                "Adelsman: -Kommer inte på fråga! Och glöm inte att betala skatt heller.\nDu var sen med förra betalningen. Så svårt kan det inte vara!",
-                                "Pierre: -Lätt för dig att säga, som aldrig har behövt arbeta eller betala en livre i skatt i hela ditt liv!\nMedan bönder som jag måste slita OCH betala både skatt och spannmål till er adelsmän.",
-                                "Adelsman: -Du ska vakta din tunga, bonde, det är jag som bestämmer här.\nJag vill att du sätter igång direkt, för nu måste jag iväg till granngården\noch hämta mina ärtor." };
+                                    "ADELSMAN: -PIERRE! JAG VILL TALA MED DIG!", 
+                                    "PIERRE: - VAD KAN JAG GÖRA FÖR ER MONSIEUR (MIN HERRE)?",
+                                    "ADELSMAN: -SOM DU ÄR VÄL MEDVETEN OM ÄR DET MIN MARK DU HYR OCH ODLAR VETE PÅ.\nJAG HAR DÄRFÖR KOMMIT FÖR ATT KRÄVA IN MIN DEL AV SKÖRDEN,\nSOM EN DEL AV DIN BETALNING.",
+                                    "PIERRE: -SNÄLLA MONSIEUR, DET HAR VARIT EN TORR VÅR OCH SKÖRDAR JAG DITT VETE\n SÅ HAR JAG KNAPPT KVAR TILL MIG SJÄLV SEN, ÄN MINDRE TILL ATT SÄLJA PÅ MARKNADEN!\nKAN JAG INTE SLIPPA DETTA ELÄNDE, BARA I ÅR? JAG LOVAR ATT DU FÅR DUBBEL SKÖRD NÄSTA ÅR!",
+                                "ADELSMAN: -KOMMER INTE PÅ FRÅGA! OCH GLÖM INTE ATT BETALA SKATTEN HELLER.\nDU VAR SEN MED FÖRRA BETALNINGEN. SÅ SVÅRT KAN DET INTE VARA!",
+                                "PIERRE: -LÄTT FÖR DIG ATT SÄGA, SOM ALDRIG BEHÖVER ARBETA ELLER BETALA EN LIVRE I SKATT I HELA DITT LIV!\nMEDAN BÖNDER SOM JAG MÅSTE SLITA OCH BETALA BÅDE SKATT OCH SPANNMÅL TILL ER ADELSMÄN.",
+                                "ADELSMAN: -DU SKA VAKTA DIN TUNGA, BONDE, DET ÄR JAG SOM BESTÄMMER HÄR.\nJAG VILL ATT DU SÄTTER IGÅNG DIREKT, FÖR NU MÅSTE JAG IVÄG TILL GRANNGÅRDEN\nOCH HÄMTA MINA ÄRTOR." };
 
     void Start()
     {
