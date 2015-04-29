@@ -3,33 +3,35 @@ using System.Collections;
 
 public class CannotGoThere : MonoBehaviour
 {
-    private float textTimer = 10;
-
     private bool collide;
     public bool canGoThere;
 
+    string[] cannotGoThere = { "Pierre: Här kommer jag inte förbi.." };
+
+    private DialogueScript dialogue;
+
     void Start()
     {
-
+        dialogue = GameObject.Find("PermObject").GetComponent<DialogueScript>();
     }
 
-    void OnGUI()
+    void Update()
+    {        
+        TryDialogue(ref collide, cannotGoThere);      
+    }
+
+    void TryDialogue(ref bool inputBool, string[] text)
     {
-
-        if (collide)
+        if (inputBool)
         {
-            textTimer -= Time.deltaTime;
-
-            GUILayout.BeginArea(new Rect(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 4, 200, 50));
-            GUILayout.Label("-Här kommer jag inte förbi..");
-            GUILayout.EndArea();
-
-            if (textTimer <= 0)
+            if (!dialogue.IsTalking)
             {
-                collide = false;
-                textTimer = 10;
+                dialogue.StartDialogue(text);
 
+                inputBool = false;
             }
+            else
+                inputBool = false;
         }
     }
 
