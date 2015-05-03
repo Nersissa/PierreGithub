@@ -16,10 +16,10 @@ public class HarvestQuestText : MonoBehaviour
 
     // Sets up the strings of text. These are easily costumizable later on
 
-    private string[] startingup = { "Pierre: -Jag undrar när landshorsjäveln kommer. Skörden börjar se förjävla bra ut. Fan nu vill jag ut och skörda." };
-    private string[] pickupsickle = { "Pierre: -Förhoppningsvis blir det något över till mig.. Jag får sätta igång direkt. Först måste jag hämta min skära uppe på laduloftet." };
-    private string[] pickedupsickle = { "Pierre: -Sådär, nu kan jag börja skörda adelsmannens vete." };
-    private string[] finishedharvest = { "Pierre: -Då var jag färdig med ett fält. Min skära är dock väldigt dålig. Jag borde nog ta mig till byn och köpa en ny innan jag fortsätter." };
+    private string[] startingup = { "Pierre: -IDAG ÄR DET DAGS. JAG MÅSTE BÖRJA SKÖRDA SÅ ATT JAG INTE FÖRLORAR MIN VETE TILL TORKAN." };
+    private string[] pickupsickle = { "Pierre: -FÖRHOPPNINGSVIS BLIR DET NÅGOT ÖVER TILL MIG.. JAG FÅR SÄTTA IGÅNG DIREKT. FÖRST MÅSTE JAG HÄMTA MIN SKÄRA UPPE PÅ LADULOFTET." };
+    private string[] pickedupsickle = { "Pierre: -SÅDÄR, NU KAN JAG BÖRJA SKÖRDA ADELSMANNENS VETE." };
+    private string[] finishedharvest = { "Pierre: -DÅ VAR JAG FÄRDIG MED ETT FÄLT. MIN SKÄRA ÄR DOCK VÄLDIGT DÅLIG. JAG BORDE NOG TA MIG TILL BYN OCH KÖPA EN NY INNAN JAG FORTSÄTTER. VÄGEN TILL BYN LIGGER BORTOM     TRÄDEN TILL HÖGER." };
 
 
     DialogueScript dialogue;
