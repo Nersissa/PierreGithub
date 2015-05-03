@@ -11,7 +11,7 @@ public class HorseMove : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        body = GetComponent<Rigidbody2D>();
+        body = GetComponentInParent<Rigidbody2D>();
     }
 
     void Update()
@@ -21,10 +21,10 @@ public class HorseMove : MonoBehaviour
             animator.SetFloat("Speed", 1);
         }
 
-        if (body.velocity.x > 0 && facingLeft)
-            Flip();
-        if (body.velocity.x < 0 && !facingLeft)
-            Flip();
+        //if (body.velocity.x > 0 && facingLeft)
+        //    Flip();
+        //if (body.velocity.x < 0 && !facingLeft)
+        //    Flip();
     }
 
     void Flip()
