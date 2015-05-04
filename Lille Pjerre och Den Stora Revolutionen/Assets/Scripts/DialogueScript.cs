@@ -3,15 +3,10 @@ using System.Collections;
 
 public class DialogueScript : MonoBehaviour
 {
-    // Variables
-
     public Texture2D TextBackground;
-
     public Font font;
 
     public bool IsTalking = false;
-    bool pressedButton;
-
 
     GUIStyle textStyle;
 
@@ -19,6 +14,7 @@ public class DialogueScript : MonoBehaviour
 
     bool NextPersonTalk = false;
     bool MoreTextComing = false;
+    bool pressedButton;
 
     float boxWidth, boxHeight;
 
@@ -51,7 +47,7 @@ public class DialogueScript : MonoBehaviour
         // If some text is not shown because the space in the dialoguebox is out,
         // The user can press the Use button in order to show the remaining text
 
-        if (MoreTextComing && pressedButton /*(Input.GetButtonDown("Use") || Input.GetAxis("Horizontal") != 0)*/)
+        if (MoreTextComing && (pressedButton || Input.GetButtonDown("Use") || Input.GetAxis("Horizontal") != 0))
         {
             DisplayingText = "";
             MoreTextComing = false;
@@ -60,7 +56,7 @@ public class DialogueScript : MonoBehaviour
 
             // If we have displayed all text, let the user see the next sentence
 
-        else if (NextPersonTalk && pressedButton/*(Input.GetButtonDown("Use") || Input.GetAxis("Horizontal") != 0)*/)
+        else if (NextPersonTalk && (pressedButton || Input.GetButtonDown("Use") || Input.GetAxis("Horizontal") != 0))
         {
             Talk();
             pressedButton = false;

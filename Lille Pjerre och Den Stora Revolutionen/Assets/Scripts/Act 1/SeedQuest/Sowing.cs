@@ -3,29 +3,23 @@ using System.Collections;
 
 public class Sowing : MonoBehaviour
 {
-    #region Variables
-
-    // Sets the variables we will be using
-
-    public bool CarryingSeeds = false;
+    public SeedQuest Quest;
     public bool InsideField = false;
-    public bool PlantedSeeds = false;
 
-    SeedQuestText QuestText;
-    ParticleSystem pSystem;
     int nrOfSeedsPlanted = 0;
+
+    ParticleSystem pSystem;
 
     void Start()
     {
-        // Gets the particlesystem and text which will be used by the GameObject
+        // Create our first quest
+
+        Quest = new SeedQuest("Uppdrag Nummer Ett");
+
+        GameObject.Find("PermObject").GetComponent<JournalScript>().AddQuest(Quest);
 
         pSystem = GetComponent<ParticleSystem>();
-        QuestText = GetComponent<SeedQuestText>();
     }
-
-    #endregion
-
-    #region Handle Sowing
 
     void Update()
     {
@@ -38,9 +32,9 @@ public class Sowing : MonoBehaviour
 
         if (nrOfSeedsPlanted >= 5)
         {
-            PlantedSeeds = true;
-            QuestText.SowedSeeds = true;
-            enabled = false;
+            Quest.SowSeeds.Complete();
+            Destroy(GameObject.Find("FieldCollision"));
+            InsideField = false;
         }
 
         // Mirrors the direction of the seeds according to the x-axis and the direction of which the player is facing
@@ -52,15 +46,16 @@ public class Sowing : MonoBehaviour
         {
             // If you sowe and have the seeds on you, you are able to sowe
 
-            if (CarryingSeeds)
+            if (Quest.PickUpSeeds.Completed)
             {
                 pSystem.Play();
                 nrOfSeedsPlanted++;
             }
+
             // Otherwise a text will show, telling you to pick up the seeds
 
             else
-                QuestText.TryingToSowWithoutSeeds = true;
+                Quest.SowSeeds.NoCanDo();
         }
         // Stop the particle system so that it doesn't repeat and only plays when you use it
 
@@ -68,6 +63,4 @@ public class Sowing : MonoBehaviour
             pSystem.Stop();
 
     }
-
-    #endregion
 }

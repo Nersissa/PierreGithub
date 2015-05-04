@@ -3,24 +3,14 @@ using System.Collections;
 
 public class Seeds : MonoBehaviour
 {
-    #region Variables
+    Sowing sowing;
 
-    // Sets the variables we will be using
-
-    Sowing sowingQuest;
-    SeedQuestText QuestText;
-
-    void Start () 
+    void Start()
     {
         // Initializes the script for the sowing quest as well as the text needed
 
-        sowingQuest = GameObject.Find("Sowing").GetComponent<Sowing>();
-        QuestText = GameObject.Find("Sowing").GetComponent<SeedQuestText>();
-	}
-
-    #endregion
-
-    #region Collision
+        sowing = GameObject.Find("Sowing").GetComponent<Sowing>();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -34,13 +24,7 @@ public class Seeds : MonoBehaviour
 
             // The player will then get the seeds, thus being able to sow at the field
 
-            sowingQuest.CarryingSeeds = true;
-
-            // And at last telling the script that the player has picked up the seeds
-
-            QuestText.PickedUpSeeds = true;
+            sowing.Quest.PickUpSeeds.Complete();
         }
     }
-
-    #endregion
 }
