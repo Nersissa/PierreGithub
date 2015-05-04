@@ -10,6 +10,8 @@ public class DialogueScript : MonoBehaviour
     public Font font;
 
     public bool IsTalking = false;
+    bool pressedButton;
+
 
     GUIStyle textStyle;
 
@@ -49,16 +51,20 @@ public class DialogueScript : MonoBehaviour
         // If some text is not shown because the space in the dialoguebox is out,
         // The user can press the Use button in order to show the remaining text
 
-        if (MoreTextComing && Input.GetButtonDown("Use"))
+        if (MoreTextComing && pressedButton /*(Input.GetButtonDown("Use") || Input.GetAxis("Horizontal") != 0)*/)
         {
             DisplayingText = "";
             MoreTextComing = false;
+            pressedButton = false;
         }
 
             // If we have displayed all text, let the user see the next sentence
 
-        else if (NextPersonTalk && Input.GetButtonDown("Use"))
+        else if (NextPersonTalk && pressedButton/*(Input.GetButtonDown("Use") || Input.GetAxis("Horizontal") != 0)*/)
+        {
             Talk();
+            pressedButton = false;
+        }
     }
 
     void OnGUI()
@@ -69,6 +75,10 @@ public class DialogueScript : MonoBehaviour
         GUILayout.BeginArea(DialogueBox, TextBackground);
         GUILayout.Box(TalkingPerson + DisplayingText, textStyle);
         GUILayout.EndArea();
+
+        if (MoreTextComing || NextPersonTalk)
+            if (GUI.Button(new Rect(DialogueBox.x + DialogueBox.width - 25, DialogueBox.y, 25, 25), "X"))
+                pressedButton = true;
     }
 
     IEnumerator animateText(string strComplete)
