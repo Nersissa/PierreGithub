@@ -1,0 +1,135 @@
+fileFormatVersion: 2
+guid: 6e24cf2e29647774e8a27ac41dc094ad
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ropeBridge01_0
+    21300002: ropeBridge01_1
+    21300004: ropeBridge01_2
+    21300006: ropeBridge01_3
+    21300008: ropeBridge01_4
+    21300010: ropeBridge01_5
+    21300012: ropeBridge01_6
+    21300014: ropeBridge01_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: ropeBridge01_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 11
+        width: 8
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ropeBridge01_1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 16
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ropeBridge01_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 54
+        width: 92
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ropeBridge01_3
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 54
+        width: 42
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ropeBridge01_4
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 23
+        width: 44
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ropeBridge01_5
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 23
+        width: 83
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ropeBridge01_6
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 23
+        width: 45
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ropeBridge01_7
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 54
+        width: 42
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
