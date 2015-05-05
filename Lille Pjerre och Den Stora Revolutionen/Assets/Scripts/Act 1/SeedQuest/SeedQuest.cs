@@ -9,11 +9,11 @@ public class SeedQuest : Quest
     private DialogueScript dialogue;
     private ScrollingText scrollingText;
 
-    private string[] pickUpSeedsPrompt = { "PIERRE: -VILKEN VACKER VÅRDAG! IDAG PASSAR DET UTMÄRKT ATT SÅ MITT VETE INFÖR SOMMAREN. STYR MIG MED PILTANGENTERNA SÅ JAG KAN HÄMTA MINA FRÖN LÄNGST BORT I LADULOFTET." };
-    private string[] goSowPrompt = { "PIERRE: -VAD BRA, NU HAR JAG MINA FRÖN! STYR MIG TILLBAKA TILL HUSET OCH VIDARE, SÅ JAG KAN SÅ MIN VETE!" };
-    private string[] illegalSowPrompt = { "PIERRE: -JAG BEHÖVER DOCK MINA FRÖN FÖR ATT KUNNA SÅ.. DE LIGGER PÅ LADULOFTET TILL VÄNSTER, STYR MIG DIT SÅ JAG KAN HÄMTA DEM!" };
+    private string[] pickUpSeedsPrompt = { "PIERRE: -VILKEN VACKER VÅRDAG! IDAG PASSAR DET UTMÄRKT ATT SÅ MITT VETE INFÖR SOMMAREN. TRYCK PÅ 'J' FÖR ATT SE VAD SOM BEHÖVER GÖRAS." };
+    private string[] goSowPrompt = { "PIERRE: -VAD BRA, NU HAR JAG MINA FRÖN OCH KAN BÖRJA SÅ." };
+    private string[] illegalSowPrompt = { "PIERRE: -JAG BEHÖVER DOCK MINA FRÖN FÖR ATT KUNNA SÅ.. DE LIGGER PÅ LADULOFTET!" };
     private string[] illegalSleepPrompt = { "PIERRE: -JAG KAN INTE VILA ÄN. MINA UPPGIFTER ÄR INTE KLARA!" };
-    private string[] goToSleepPrompt = { "PIERRE: -PUH, DET VAR HÅRT ARBETE, MEN NU ÄR DET KLART!\nSTYR MIG IN I MITT HUS, SÅ KAN JAG GÅ OCH LÄGGA MIG FÖR DAGEN." };
+    private string[] goToSleepPrompt = { "PIERRE: -DÅ VAR ETT FÄLT KLART! DET BÖRJAR DOCK BLI SENT, SÅ JAG FÅR GÅ OCH LÄGGA MIG FÖR DAGEN." };
 
     public SeedQuest(string Name)
         : base(Name)
@@ -21,9 +21,9 @@ public class SeedQuest : Quest
         dialogue = GameObject.Find("PermObject").GetComponent<DialogueScript>();
         scrollingText = GameObject.Find("PermObject").GetComponent<ScrollingText>();
 
-        PickUpSeeds = new QuestStep("Plocka upp fröna på laduloftet.", "Du hittar ladan till vänster om Pierres hus");
-        SowSeeds = new QuestStep("Så fröna på fältet.", "Fältet finns till höger om Pierres Hus");
-        Rest = new QuestStep("Gå till sängen för att vila", "Sängen finns inuti Pierres hus");
+        PickUpSeeds = new QuestStep("PLOCKA UPP FRÖNA PÅ LADULOFTET", "Du hittar ladan till vänster om Pierres hus.\nFröna finns längst in i laduloftet.");
+        SowSeeds = new QuestStep("SÅ FRÖNA PÅ FÄLTET", "Fältet finns till höger om Pierres Hus.\nAnvänd 'E' vid fältet för att så.");
+        Rest = new QuestStep("GÅ TILL SÄNGEN FÖR ATT VILA", "Sängen finns inuti Pierres hus.\nAnvänd 'E' för att gå in och ut genom dörren.");
 
         PickUpSeeds.Created += Instructions;
 

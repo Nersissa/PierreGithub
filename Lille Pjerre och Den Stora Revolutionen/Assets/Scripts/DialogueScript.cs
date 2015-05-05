@@ -73,7 +73,7 @@ public class DialogueScript : MonoBehaviour
         GUILayout.EndArea();
 
         if (MoreTextComing || NextPersonTalk)
-            if (GUI.Button(new Rect(DialogueBox.x + DialogueBox.width - 25, DialogueBox.y, 25, 25), "X"))
+            if (GUI.Button(new Rect(DialogueBox.x + DialogueBox.width - 25, DialogueBox.y, 25, 25), "E"))
                 pressedButton = true;
     }
 

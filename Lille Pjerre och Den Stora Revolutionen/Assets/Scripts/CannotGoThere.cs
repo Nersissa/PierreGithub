@@ -5,7 +5,7 @@ public class CannotGoThere : MonoBehaviour
 {
     public bool canGoThere;
 
-    string[] cannotGoThere = { "Pierre: Här kommer jag inte förbi.." };
+    string[] cannotGoThere = { "Pierre: HÄR KOMMER JAG INTE FÖRBI.." };
 
     void OnTriggerEnter2D(Collider2D other)
     {
