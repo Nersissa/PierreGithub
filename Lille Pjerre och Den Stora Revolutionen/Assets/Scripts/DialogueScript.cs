@@ -47,7 +47,7 @@ public class DialogueScript : MonoBehaviour
         // If some text is not shown because the space in the dialoguebox is out,
         // The user can press the Use button in order to show the remaining text
 
-        if (MoreTextComing && (pressedButton || Input.GetButtonDown("Use")))
+        if (MoreTextComing && (pressedButton || Input.GetButtonDown("Use") || Input.GetAxis("Horizontal") != 0))
         {
             DisplayingText = "";
             MoreTextComing = false;
@@ -56,7 +56,7 @@ public class DialogueScript : MonoBehaviour
 
             // If we have displayed all text, let the user see the next sentence
 
-        else if (NextPersonTalk && (pressedButton || Input.GetButtonDown("Use")))
+        else if (NextPersonTalk && (pressedButton || Input.GetButtonDown("Use") || Input.GetAxis("Horizontal") != 0))
         {
             Talk();
             pressedButton = false;
@@ -73,7 +73,7 @@ public class DialogueScript : MonoBehaviour
         GUILayout.EndArea();
 
         if (MoreTextComing || NextPersonTalk)
-            if (GUI.Button(new Rect(DialogueBox.x + DialogueBox.width - 25, DialogueBox.y, 25, 25), "E"))
+            if (GUI.Button(new Rect(DialogueBox.x + DialogueBox.width - 25, DialogueBox.y, 25, 25), "X"))
                 pressedButton = true;
     }
 
@@ -109,9 +109,6 @@ public class DialogueScript : MonoBehaviour
     public void StartDialogue(string[] Dialogue)
     {
         // The player wont be able to move during the dialogue to prevent bugs or unintented behavior
-
-        if (IsTalking)
-            return;
 
         GameObject.Find("Player").GetComponent<PlayerMovement>().Disable();
 
