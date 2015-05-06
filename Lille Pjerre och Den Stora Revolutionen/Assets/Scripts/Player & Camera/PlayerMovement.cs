@@ -15,19 +15,36 @@ public class PlayerMovement : MonoBehaviour
 
     // Sets the variables we will be using
 
+    public AudioClip moveSound1;
+    public AudioClip moveSound2;
+    public float timeWalkSteps = 0.4f;
+    public float timeRunSteps = 0.3f;
+
     PlayerState currentState;
 
     float speed = 2;
     float runningSpeed = 4;
 
     bool facingRight = true,
-          isRunning = false;
+          isRunning = false,
+          sfxPlaying = false;
 
     bool IsEnabled = true;
     float moveX, moveY;
 
     Rigidbody2D rigidBody2D;
     Animator animator;
+
+    IEnumerator sfxCounter()
+    {
+        sfxPlaying = true;
+        SoundManager.instance.RandomizeSfx(moveSound1, moveSound2);
+        if (!isRunning)
+            yield return new WaitForSeconds(timeWalkSteps);
+        else
+            yield return new WaitForSeconds(timeRunSteps);
+        sfxPlaying = false;
+    }
 
     void Start()
     {
@@ -47,6 +64,15 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Handles Input
+
+        if (moveX != 0)
+        {
+            //If moving, play step sounds
+
+            if (!sfxPlaying)
+                StartCoroutine(sfxCounter());
+        }
+
 
         if (!IsEnabled)
             return;
