@@ -7,11 +7,11 @@ public class ScrollingText : MonoBehaviour
     // The varibles we will be using
     public Font font;
 
-    bool DisplayingText = false;
+    public bool DisplayingText = false;
+    bool isFinal = false;
 
     ArrayList Text;
 
-   
     public float ScrollingSpeed = 15;
     float originalScrollSpeed;
     float textOffset = 0;
@@ -97,11 +97,15 @@ public class ScrollingText : MonoBehaviour
 
             if (currLine == lastLine && labelPosY <= 0)
             {
+                if (isFinal)
+                    UnityEditor.EditorApplication.isPlaying = false;
+
                 scenes.LoadScene(ActToLoad, SceneToLoad);
                 fading.Begin(-1);
                 DisplayingText = false;
                 textOffset = 0;
             }
+
         }
     }
 
@@ -122,5 +126,25 @@ public class ScrollingText : MonoBehaviour
         Text = scenes.GetActText(ActNumber, SceneNumber);
         DisplayingText = true;
         fading.Begin(1);
+    }
+
+    public void DisplayFinal(int ActNumber, int SceneNumber, MonoBehaviour script = null)
+    {
+        // Hides scripts if needed, like menu buttons
+
+        if (script != null)
+            script.enabled = false;
+
+        //  Makes sure the correct Scene is loaded afterwards
+
+        ActToLoad = ActNumber;
+        SceneToLoad = SceneNumber;
+
+        // Displays the correct text depending on act
+
+        Text = scenes.GetActText(ActNumber, SceneNumber);
+        DisplayingText = true;
+        fading.Begin(1);
+        isFinal = true;
     }
 }

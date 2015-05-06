@@ -20,7 +20,7 @@ using UnityEngine;
 
         private DialogueScript dialogue;
         private NobleCutScene cutScene;
-        private Scenes scenes;
+        private ScrollingText text;
 
         private string[] giveInstructions = { "PIERRE: -IDAG ÄR DET DAGS. JAG MÅSTE BÖRJA SKÖRDA SÅ ATT JAG INTE FÖRLORAR MIN VETE TILL TORKAN." };
         private string[] pickUpSickle = { "PIERRE: -FÖRHOPPNINGSVIS BLIR DET NÅGOT ÖVER TILL MIG.. JAG FÅR SÄTTA IGÅNG DIREKT. FÖRST MÅSTE JAG HÄMTA MIN SKÄRA UPPE PÅ LADULOFTET." };
@@ -33,7 +33,7 @@ using UnityEngine;
         {
             dialogue = GameObject.Find("PermObject").GetComponent<DialogueScript>();
             cutScene = GameObject.Find("Nobleman").GetComponent<NobleCutScene>();
-            scenes = GameObject.Find("PermObject").GetComponent<Scenes>();
+            text = GameObject.Find("PermObject").GetComponent<ScrollingText>();
 
             OverlookField = new QuestStep("KOLLA HUR SKÖRDEN SER UT", "Gå till ditt fält utanför huset till vänster.");
             OverlookField.Created += Instructions;
@@ -88,10 +88,11 @@ using UnityEngine;
         {
             dialogue.StartDialogue(buySickle);
             GameObject.Find("BlockadeRight").GetComponent<CannotGoThere>().canGoThere = true;
+            GameObject.Destroy(GameObject.Find("ColliderRight"));
         }
 
         void TriggerNextScene(object sender, EventArgs e)
         {
-            scenes.TransitionToScene(1, 3);
+            text.DisplayFinal(1, 3);
         }
     }

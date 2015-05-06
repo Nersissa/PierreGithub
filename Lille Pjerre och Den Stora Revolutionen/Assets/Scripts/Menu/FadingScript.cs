@@ -11,7 +11,7 @@ public class FadingScript : MonoBehaviour
     int fadeDir = -1;
 
     float fadeSpeed = 0.5f;
-    float alpha = 0.0f;
+    float alpha = 0.0f; 
 
     void OnGUI()
     {

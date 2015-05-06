@@ -23,7 +23,7 @@ public class JournalScript : MonoBehaviour
         inCompleted.font = font;
 
         completed = new GUIStyle();
-        completed.normal.textColor = Color.green;
+        completed.normal.textColor = Color.grey;
         completed.font = font;
     }
 
