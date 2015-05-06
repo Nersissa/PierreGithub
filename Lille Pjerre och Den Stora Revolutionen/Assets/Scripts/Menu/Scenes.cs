@@ -41,4 +41,9 @@ using System.IO;
     {
         Application.LoadLevel("Act" + ActNumber.ToString() + "Scene" + SceneNumber.ToString());
     }
+
+    public void TransitionToScene(int ActNumber, int SceneNumber)
+    {
+
+    }
 }
