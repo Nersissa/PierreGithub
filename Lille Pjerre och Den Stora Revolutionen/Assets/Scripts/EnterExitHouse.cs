@@ -7,14 +7,30 @@ public class EnterExitHouse : MonoBehaviour
     // Preferably another door, which in turn you connect this one with
 
     public GameObject teleport;
+    GameObject player;
+    private bool inside;
+
+    void Start()
+    {
+        player = GameObject.Find("Player");
+    }
+
+    void Update()
+    {
+        if (inside && Input.GetButtonDown("Use"))
+        {
+            player.gameObject.transform.position = teleport.gameObject.transform.position; 
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+
         // This will only activate when the player presses the use-button
 
-        if (other.gameObject.tag == "Player" && Input.GetButtonDown("Use"))
+        if (other.gameObject.tag == "Player")
         {
-            other.gameObject.transform.position = teleport.gameObject.transform.position;
+            inside = true;
         }
     }
 
@@ -22,9 +38,17 @@ public class EnterExitHouse : MonoBehaviour
     {
         // This will only activate when the player presses the use-button
 
-        if (other.gameObject.tag == "Player" && Input.GetButtonDown("Use"))
+        if (other.gameObject.tag == "Player")
         {
-            other.gameObject.transform.position = teleport.gameObject.transform.position;
+            inside = true;
         }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        // This will only activate when the player presses the use-button
+
+        inside = false;
+
     }
 }
