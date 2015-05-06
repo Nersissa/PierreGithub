@@ -6,7 +6,7 @@ public class CannotGoThere : MonoBehaviour
     private bool collide;
     public bool canGoThere;
 
-    string[] cannotGoThere = { "Pierre: Här kommer jag inte förbi.." };
+    string[] cannotGoThere = { "Pierre: HÄR KOMMER JAG INTE FÖRBI.." };
 
     private DialogueScript dialogue;
 
