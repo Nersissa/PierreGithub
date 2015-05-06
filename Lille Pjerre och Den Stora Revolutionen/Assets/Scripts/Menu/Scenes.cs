@@ -42,8 +42,16 @@ using System.IO;
         Application.LoadLevel("Act" + ActNumber.ToString() + "Scene" + SceneNumber.ToString());
     }
 
+    private IEnumerator WaitForScene(int ActNumber, int SceneNumber)
+    {
+        GameObject.Find("PermObject").GetComponent<FadingScript>().Begin(1);
+        yield return new WaitForSeconds(2);
+        LoadScene(ActNumber, SceneNumber);
+        GameObject.Find("PermObject").GetComponent<FadingScript>().Begin(-1);
+    }
+
     public void TransitionToScene(int ActNumber, int SceneNumber)
     {
-
+        StartCoroutine(WaitForScene(ActNumber, SceneNumber));
     }
 }

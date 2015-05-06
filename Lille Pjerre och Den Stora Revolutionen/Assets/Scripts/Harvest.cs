@@ -20,7 +20,7 @@ using UnityEngine;
 
         private DialogueScript dialogue;
         private NobleCutScene cutScene;
-        private ScrollingText scrollingText;
+        private Scenes scenes;
 
         private string[] giveInstructions = { "Pierre: -IDAG ÄR DET DAGS. JAG MÅSTE BÖRJA SKÖRDA SÅ ATT JAG INTE FÖRLORAR MIN VETE TILL TORKAN." };
         private string[] pickUpSickle = { "Pierre: -FÖRHOPPNINGSVIS BLIR DET NÅGOT ÖVER TILL MIG.. JAG FÅR SÄTTA IGÅNG DIREKT. FÖRST MÅSTE JAG HÄMTA MIN SKÄRA UPPE PÅ LADULOFTET." };
@@ -32,8 +32,8 @@ using UnityEngine;
             : base(Name)
         {
             dialogue = GameObject.Find("PermObject").GetComponent<DialogueScript>();
-            scrollingText = GameObject.Find("PermObject").GetComponent<ScrollingText>();
             cutScene = GameObject.Find("Nobleman").GetComponent<NobleCutScene>();
+            scenes = GameObject.Find("PermObject").GetComponent<Scenes>();
 
             OverlookField = new QuestStep("KOLLA HUR SKÖRDEN SER UT", "Gå till ditt fält utanför huset till vänster.");
             OverlookField.Created += Instructions;
@@ -91,6 +91,6 @@ using UnityEngine;
 
         void TriggerNextScene(object sender, EventArgs e)
         {
-            scrollingText.Display(1, 3);
+            scenes.TransitionToScene(1, 3);
         }
     }
