@@ -8,7 +8,7 @@ public class CheckForField : MonoBehaviour
     void Start()
     {
         // This script will only check if the player has entered the field
-
+    
         sowing = GetComponentInParent<Sowing>();
     }
 

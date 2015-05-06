@@ -1,110 +1,111 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+enum Part
+{
+    CallPlayer,
+    MovePlayer,
+    TalkToPlayer,
+    MoveFromPlayer,
+}
+
 public class NobleCutScene : MonoBehaviour
 {
-    // Variables
-
-    private bool movingRight = false;
-    private bool movingPlayer = false;
-    private bool startedTalking = false;
-    private bool facingLeft = true;
-
-    PlayerMovement playermove;
-    DialogueScript dialogue;
-    HarvestQuestText questText;
-    Sickle sicklePickup;
-
     Rigidbody2D body;
     Rigidbody2D playerbody;
 
+    Part part;
 
-    private string[] Dialogue = {
-                                    "ADELSMAN: -PIERRE! JAG VILL TALA MED DIG!", 
-                                    "PIERRE: - VAD KAN JAG GÖRA FÖR ER MONSIEUR (MIN HERRE)?",
-                                    "ADELSMAN: -SOM DU ÄR VÄL MEDVETEN OM ÄR DET MIN MARK DU HYR OCH ODLAR VETE PÅ.\nJAG HAR DÄRFÖR KOMMIT FÖR ATT KRÄVA IN MIN DEL AV SKÖRDEN,\nSOM EN DEL AV DIN BETALNING.",
-                                    "PIERRE: -SNÄLLA MONSIEUR, DET HAR VARIT EN TORR VÅR OCH SKÖRDAR JAG DITT VETE\n SÅ HAR JAG KNAPPT KVAR TILL MIG SJÄLV SEN, ÄN MINDRE TILL ATT SÄLJA PÅ MARKNADEN!\nKAN JAG INTE SLIPPA DETTA ELÄNDE, BARA I ÅR? JAG LOVAR ATT DU FÅR DUBBEL SKÖRD NÄSTA ÅR!",
-                                "ADELSMAN: -KOMMER INTE PÅ FRÅGA! OCH GLÖM INTE ATT BETALA SKATTEN HELLER.\nDU VAR SEN MED FÖRRA BETALNINGEN. SÅ SVÅRT KAN DET INTE VARA!",
-                                "PIERRE: -LÄTT FÖR DIG ATT SÄGA, SOM ALDRIG BEHÖVER ARBETA ELLER BETALA EN LIVRE (FRANKRIKES VALUTA) I SKATT.\nMEDAN BÖNDER SOM JAG MÅSTE SLITA OCH BETALA BÅDE SKATT OCH SPANNMÅL TILL ER ADELSMÄN.",
-                                "ADELSMAN: -DU SKA VAKTA DIN TUNGA, BONDE, DET ÄR JAG SOM BESTÄMMER HÄR.\nJAG VILL ATT DU SÄTTER IGÅNG DIREKT, FÖR NU MÅSTE JAG IVÄG TILL GRANNGÅRDEN\nOCH HÄMTA MINA ÄRTOR." };
+    PlayerMovement playermove;
+    DialogueScript dialogue;
+    Harvest harvest;
+
+    bool facingLeft = true;
+
+    string[] callPlayer = {
+                           "ADELSMAN: -PIERRE! JAG VILL TALA MED DIG!"
+                          };
+
+    string[] Dialogue = {
+                         "PIERRE: - VAD KAN JAG GÖRA FÖR ER MONSIEUR (MIN HERRE)?",
+                         "ADELSMAN: -SOM DU ÄR VÄL MEDVETEN OM ÄR DET MIN MARK DU HYR OCH ODLAR VETE PÅ.\nJAG HAR DÄRFÖR KOMMIT FÖR ATT KRÄVA IN MIN DEL AV SKÖRDEN,\nSOM EN DEL AV DIN BETALNING.",
+                         "PIERRE: -SNÄLLA MONSIEUR, DET HAR VARIT EN TORR VÅR OCH SKÖRDAR JAG DITT VETE\n SÅ HAR JAG KNAPPT KVAR TILL MIG SJÄLV SEN, ÄN MINDRE TILL ATT SÄLJA PÅ MARKNADEN!\nKAN JAG INTE SLIPPA DETTA ELÄNDE, BARA I ÅR? JAG LOVAR ATT DU FÅR DUBBEL SKÖRD NÄSTA ÅR!",
+                         "ADELSMAN: -KOMMER INTE PÅ FRÅGA! OCH GLÖM INTE ATT BETALA SKATTEN HELLER.\nDU VAR SEN MED FÖRRA BETALNINGEN. SÅ SVÅRT KAN DET INTE VARA!",
+                         "PIERRE: -LÄTT FÖR DIG ATT SÄGA, SOM ALDRIG BEHÖVER ARBETA ELLER BETALA EN LIVRE (FRANKRIKES VALUTA) I SKATT.\nMEDAN BÖNDER SOM JAG MÅSTE SLITA OCH BETALA BÅDE SKATT OCH SPANNMÅL TILL ER ADELSMÄN.",
+                         "ADELSMAN: -DU SKA VAKTA DIN TUNGA, BONDE, DET ÄR JAG SOM BESTÄMMER HÄR.\nJAG VILL ATT DU SÄTTER IGÅNG DIREKT, FÖR NU MÅSTE JAG IVÄG TILL GRANNGÅRDEN\nOCH HÄMTA MINA ÄRTOR." 
+                        };
 
     void Start()
     {
-        playermove = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        body = GetComponent<Rigidbody2D>();
+        
         playerbody = GameObject.Find("Player").GetComponent<Rigidbody2D>();
-        sicklePickup = GameObject.Find("Sickle").GetComponent<Sickle>();
-        questText = GameObject.Find("HarvestQuest").GetComponent<HarvestQuestText>();
+        playermove = GameObject.Find("Player").GetComponent<PlayerMovement>();
 
         dialogue = GameObject.Find("PermObject").GetComponent<DialogueScript>();
-        body = GetComponent<Rigidbody2D>();
-
+        harvest = GameObject.Find("HarvestQuest").GetComponent<Harvest>();
     }
 
-    // The nobleman needs some time to get away from pierre
+    public void StartCutScene()
+    {
+        dialogue.StartDialogue(callPlayer);
+
+        part = Part.MovePlayer;
+    }
 
     public IEnumerator EndCutScene()
     {
-        movingRight = true;
+        playermove.Disable();
+        body.velocity = new Vector2(1, 0);
+
         yield return new WaitForSeconds(2);
-        playermove.Enable();
+
         Destroy(gameObject);
-        questText.PickUpSickle = true;
-        sicklePickup.canPickUpSickle = true;
+        playermove.Enable();
+        harvest.Quest.Talking_NobleMan.Complete();
     }
 
     void Update()
     {
-        // We are moving the player
-
-        if (movingPlayer)
+        switch (part)
         {
-            // But only if they are far away from eachother
+            case Part.MovePlayer:
 
-            if (Vector2.Distance(playerbody.position, body.position) > 2)
-                playermove.MoveHorizontal(1);
-            else
-            {
-                // When the player gets close we can start the dialogue
+                if (Vector2.Distance(playerbody.position, body.position) > 2)
+                    playermove.MoveHorizontal(1);
 
-                playermove.MoveHorizontal(0);
-                dialogue.StartDialogue(Dialogue);
-                startedTalking = true;
-                movingPlayer = false;
-            }
-        }
+                else
+                {
+                    playermove.MoveHorizontal(0);
 
-        if (!dialogue.IsTalking && startedTalking)
-        {
-            StartCoroutine(EndCutScene());
-            startedTalking = false;
-        }
+                    dialogue.IsTalking = false;
+                    dialogue.StartDialogue(Dialogue);
 
-        if (movingRight)
-        {
-            body.velocity = new Vector2(1, 0);            
+                    part = Part.TalkToPlayer;
+                }
+
+                break;
+            case Part.TalkToPlayer:
+
+                if (!dialogue.IsTalking)
+                    part = Part.MoveFromPlayer;
+
+                break;
+            case Part.MoveFromPlayer:
+
+                StartCoroutine(EndCutScene());
+
+                break;
         }
 
         if (body.velocity.x > 0 && facingLeft)
             Flip();
     }
 
-    void FixedUpdate()
-    {
-        // Used later for animating the fucker
-    }
-
-    public void StartCutScene()
-    {
-        // Disables playermovement
-        // Allows us to alter player's position
-
-        playermove.Disable();
-        movingPlayer = true;
-    }
-
     void Flip()
     {
-        // Mirrors the animation image of you change direction
+        // Mirrors the animation image if you change direction
+
         facingLeft = !facingLeft;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;

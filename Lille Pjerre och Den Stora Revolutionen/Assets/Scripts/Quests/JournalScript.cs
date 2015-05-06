@@ -22,7 +22,7 @@ public class JournalScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Journal"))
             displaying = !displaying;
     }
 
