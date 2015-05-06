@@ -43,7 +43,7 @@ public class NobleCutScene : MonoBehaviour
         playermove = GameObject.Find("Player").GetComponent<PlayerMovement>();
 
         dialogue = GameObject.Find("PermObject").GetComponent<DialogueScript>();
-        harvest = GameObject.Find("HarvestQuest").GetComponent<Harvest>();
+        harvest = GameObject.Find("HarvestQuest").GetComponent<Harvest>();        
     }
 
     public void StartCutScene()

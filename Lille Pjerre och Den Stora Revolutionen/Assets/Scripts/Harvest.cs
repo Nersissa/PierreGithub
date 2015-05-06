@@ -21,6 +21,7 @@ using UnityEngine;
         private DialogueScript dialogue;
         private NobleCutScene cutScene;
         private ScrollingText text;
+        private Interactable interactable;
 
         private string[] giveInstructions = { "PIERRE: -IDAG ÄR DET DAGS. JAG MÅSTE BÖRJA SKÖRDA SÅ ATT JAG INTE FÖRLORAR MIN VETE TILL TORKAN." };
         private string[] pickUpSickle = { "PIERRE: -FÖRHOPPNINGSVIS BLIR DET NÅGOT ÖVER TILL MIG.. JAG FÅR SÄTTA IGÅNG DIREKT. FÖRST MÅSTE JAG HÄMTA MIN SKÄRA UPPE PÅ LADULOFTET." };
@@ -34,8 +35,9 @@ using UnityEngine;
             dialogue = GameObject.Find("PermObject").GetComponent<DialogueScript>();
             cutScene = GameObject.Find("Nobleman").GetComponent<NobleCutScene>();
             text = GameObject.Find("PermObject").GetComponent<ScrollingText>();
+            interactable = GameObject.Find("Field").GetComponent<Interactable>();
 
-            OverlookField = new QuestStep("KOLLA HUR SKÖRDEN SER UT", "Gå till ditt fält utanför huset till vänster.");
+            OverlookField = new QuestStep("KOLLA HUR SKÖRDEN SER UT", "Gå till ditt fält utanför huset till höger.");
             OverlookField.Created += Instructions;
             OverlookField.StepComplete += StartCutScene;
             AddStep(OverlookField);
@@ -48,7 +50,7 @@ using UnityEngine;
             GetSickle.StepComplete += StartHarvest;
             AddStep(GetSickle);
 
-            Harvest = new QuestStep("SKÖRDA VETE ÅT LANDSHERREN", "Gå till fältet och använd skäran med 'E' för att skörda.");
+            Harvest = new QuestStep("SKÖRDA VETE ÅT LANDSHERREN", "Gå till fältet och använd skäran för att skörda.");
             Harvest.StepComplete += BuySickle;
             Harvest.IllegalAction += CantHarvest;
             AddStep(Harvest);
@@ -56,11 +58,13 @@ using UnityEngine;
             HeadToTown = new QuestStep("GÅ TILL STADEN", "Vägen till staden ligger genom gläntan till höger.");
             HeadToTown.StepComplete += TriggerNextScene;
             AddStep(HeadToTown);
+
         }
 
         void Instructions(object sender, EventArgs e)
         {
             dialogue.StartDialogue(giveInstructions);
+            interactable.Disable();
         }
 
         void StartCutScene(object sender, EventArgs e)
@@ -71,7 +75,7 @@ using UnityEngine;
         void PickUpSicke(object sender, EventArgs e)
         {
             dialogue.StartDialogue(pickUpSickle);
-            GameObject.Find("Sickle").GetComponent<PickUpAble>().Enable(GetSickle);
+            GameObject.Find("Sickle").GetComponent<PickUpAble>().Enable(GetSickle);            
         }
 
         void CantHarvest(object sender, EventArgs e)
@@ -82,6 +86,7 @@ using UnityEngine;
         void StartHarvest(object sender, EventArgs e)
         {
             dialogue.StartDialogue(startHarvest);
+            interactable.Enable();
         }
 
         void BuySickle(object sender, EventArgs e)

@@ -8,6 +8,7 @@ public class SeedQuest : Quest
 
     private DialogueScript dialogue;
     private ScrollingText scrollingText;
+    private Interactable interactable;
 
     private string[] pickUpSeedsPrompt = { "PIERRE: -VILKEN VACKER VÅRDAG! IDAG PASSAR DET UTMÄRKT ATT SÅ MITT VETE INFÖR SOMMAREN. TRYCK PÅ 'J' FÖR ATT SE VAD SOM BEHÖVER GÖRAS." };
     private string[] goSowPrompt = { "PIERRE: -VAD BRA, NU HAR JAG MINA FRÖN OCH KAN BÖRJA SÅ." };
@@ -20,10 +21,11 @@ public class SeedQuest : Quest
     {
         dialogue = GameObject.Find("PermObject").GetComponent<DialogueScript>();
         scrollingText = GameObject.Find("PermObject").GetComponent<ScrollingText>();
+        interactable = GameObject.Find("Field").GetComponent<Interactable>();
 
-        PickUpSeeds = new QuestStep("PLOCKA UPP FRÖNA PÅ LADULOFTET", "Du hittar ladan till vänster om Pierres hus.\nFröna finns längst in i laduloftet.");
-        SowSeeds = new QuestStep("SÅ FRÖNA PÅ FÄLTET", "Fältet finns till höger om Pierres Hus.\nAnvänd 'E' vid fältet för att så.");
-        Rest = new QuestStep("GÅ TILL SÄNGEN FÖR ATT VILA", "Sängen finns inuti Pierres hus.\nAnvänd 'E' för att gå in och ut genom dörren.");
+        PickUpSeeds = new QuestStep("PLOCKA UPP FRÖNA PÅ LADULOFTET", "Du hittar ladan till vänster om Pierres hus.");
+        SowSeeds = new QuestStep("SÅ FRÖNA PÅ FÄLTET", "Fältet finns till höger om Pierres Hus.");
+        Rest = new QuestStep("GÅ TILL SÄNGEN FÖR ATT VILA", "Sängen finns inuti Pierres hus.");
 
         PickUpSeeds.Created += Instructions;
 
@@ -63,6 +65,7 @@ public class SeedQuest : Quest
     void SowSeedsComplete(object sender, EventArgs e)
     {
         dialogue.StartDialogue(goToSleepPrompt);
+        interactable.Disable();
     }
 
     void PickUpSeedsComplete(object sender, EventArgs e)
