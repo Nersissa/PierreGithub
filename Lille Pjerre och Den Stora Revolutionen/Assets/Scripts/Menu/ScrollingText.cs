@@ -98,7 +98,7 @@ public class ScrollingText : MonoBehaviour
             if (currLine == lastLine && labelPosY <= 0)
             {
                 if (isFinal)
-                    UnityEditor.EditorApplication.isPlaying = false;
+                    Application.Quit();
 
                 scenes.LoadScene(ActToLoad, SceneToLoad);
                 fading.Begin(-1);
