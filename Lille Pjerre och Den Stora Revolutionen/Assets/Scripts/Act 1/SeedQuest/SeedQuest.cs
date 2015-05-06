@@ -42,6 +42,7 @@ public class SeedQuest : Quest
     void Instructions(object sender, EventArgs e)
     {
         dialogue.StartDialogue(pickUpSeedsPrompt);
+        GameObject.Find("Seeds").GetComponent<PickUpAble>().Enable(PickUpSeeds);
     }
 
     void DontSleepYet(object sender, EventArgs e)
