@@ -5,6 +5,7 @@ public class Permanent : MonoBehaviour
 {
 
     GameObject otherPermObject;
+
     void Start()
     {
 

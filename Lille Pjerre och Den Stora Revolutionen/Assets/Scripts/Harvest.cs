@@ -22,11 +22,11 @@ using UnityEngine;
         private NobleCutScene cutScene;
         private Scenes scenes;
 
-        private string[] giveInstructions = { "Pierre: -IDAG ÄR DET DAGS. JAG MÅSTE BÖRJA SKÖRDA SÅ ATT JAG INTE FÖRLORAR MIN VETE TILL TORKAN." };
-        private string[] pickUpSickle = { "Pierre: -FÖRHOPPNINGSVIS BLIR DET NÅGOT ÖVER TILL MIG.. JAG FÅR SÄTTA IGÅNG DIREKT. FÖRST MÅSTE JAG HÄMTA MIN SKÄRA UPPE PÅ LADULOFTET." };
-        private string[] startHarvest = { "Pierre: -SÅDÄR, NU KAN JAG BÖRJA SKÖRDA ADELSMANNENS VETE." };
-        private string[] buySickle = { "Pierre: -DÅ VAR JAG FÄRDIG MED ETT FÄLT. MIN SKÄRA ÄR DOCK VÄLDIGT DÅLIG. JAG BORDE NOG TA MIG TILL BYN OCH KÖPA EN NY INNAN JAG FORTSÄTTER." };
-        private string[] noSickle = { "Pierre: -JAG MÅSTE HA MIN SKÄRA FÖR ATT KUNNA SKÖRDA!" };
+        private string[] giveInstructions = { "PIERRE: -IDAG ÄR DET DAGS. JAG MÅSTE BÖRJA SKÖRDA SÅ ATT JAG INTE FÖRLORAR MIN VETE TILL TORKAN." };
+        private string[] pickUpSickle = { "PIERRE: -FÖRHOPPNINGSVIS BLIR DET NÅGOT ÖVER TILL MIG.. JAG FÅR SÄTTA IGÅNG DIREKT. FÖRST MÅSTE JAG HÄMTA MIN SKÄRA UPPE PÅ LADULOFTET." };
+        private string[] startHarvest = { "PIERRE: -SÅDÄR, NU KAN JAG BÖRJA SKÖRDA ADELSMANNENS VETE." };
+        private string[] buySickle = { "PIERRE: -DÅ VAR JAG FÄRDIG MED ETT FÄLT. MIN SKÄRA ÄR DOCK VÄLDIGT DÅLIG. JAG BORDE NOG TA MIG TILL BYN OCH KÖPA EN NY INNAN JAG FORTSÄTTER." };
+        private string[] noSickle = { "PIERRE: -JAG MÅSTE HA MIN SKÄRA FÖR ATT KUNNA SKÖRDA!" };
 
         public HarvestQuest(string Name)
             : base(Name)
@@ -71,6 +71,7 @@ using UnityEngine;
         void PickUpSicke(object sender, EventArgs e)
         {
             dialogue.StartDialogue(pickUpSickle);
+            GameObject.Find("Sickle").GetComponent<PickUpAble>().Enable(GetSickle);
         }
 
         void CantHarvest(object sender, EventArgs e)

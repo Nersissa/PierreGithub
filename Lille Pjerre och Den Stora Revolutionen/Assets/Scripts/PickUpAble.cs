@@ -21,6 +21,20 @@ public class PickUpAble : MonoBehaviour
         boxH = boxW;
 
         guidanceBox = new Rect(Screen.width / 2 - boxW / 2, Screen.height / 2 - boxH, boxW, boxH);
+
+        Disable();
+    }
+
+    public void Disable()
+    {
+        enabled = false;
+    }
+
+    private QuestStep queststep;
+    public void Enable(QuestStep quest)
+    {
+        enabled = true;
+        queststep = quest;
     }
 
     void OnGUI()
@@ -29,6 +43,12 @@ public class PickUpAble : MonoBehaviour
         {
             GUI.DrawTexture(guidanceBox, GuidancePicture);
             texture.sprite = NewPicture;
+
+            if (Input.GetButtonDown("Use"))
+            {
+                Destroy(gameObject);
+                queststep.Complete();
+            }
 
         }
         else
