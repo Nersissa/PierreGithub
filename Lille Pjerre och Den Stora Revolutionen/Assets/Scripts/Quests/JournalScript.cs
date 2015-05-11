@@ -10,6 +10,8 @@ public class JournalScript : MonoBehaviour
     private int selectedQuest = 0;
     protected bool displaying;
 
+    public bool activated;
+
     protected List<Quest> Quests;
     protected GUIStyle inCompletedStyle;
     protected GUIStyle completedStyle;
@@ -29,7 +31,7 @@ public class JournalScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Journal"))
+        if (Input.GetButtonDown("Journal") && activated)
             displaying = !displaying;
     }
 
@@ -41,6 +43,9 @@ public class JournalScript : MonoBehaviour
 
     void OnGUI()
     {
+        if (!activated)
+            return;
+
         HandleMiniMe(ref displaying);
 
         if (!displaying)

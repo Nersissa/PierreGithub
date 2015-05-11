@@ -54,20 +54,20 @@ public class MenuButtonsFactory : MonoBehaviour
         {
             case ScreenState.StartScreen:
 
-                if (GUI.Button(new Rect(topButtonX, topButtonY, buttonWidth, buttonHeight), "PLAY FROM START", style))
+                if (GUI.Button(new Rect(topButtonX, topButtonY, buttonWidth, buttonHeight), "SPELA FRÅN BÖRJAN", style))
                     introText.Display(1, 1, this);
 
-                if (GUI.Button(new Rect(topButtonX, topButtonY + buttonHeight * 2, buttonWidth, buttonHeight), "CHOOSE ACT", style))
+                if (GUI.Button(new Rect(topButtonX, topButtonY + buttonHeight * 2, buttonWidth, buttonHeight), "VÄLJ AKT", style))
                     state = ScreenState.ActScreen;
 
 
                 break;
             case ScreenState.ActScreen:
 
-                if (GUI.Button(new Rect(10, 10, 100, 50), "BACK", style))
+                if (GUI.Button(new Rect(10, 10, 100, 50), "TILLBAKA", style))
                     state = ScreenState.StartScreen;
 
-                if (GUI.Button(new Rect(topButtonX, topButtonY, buttonWidth, buttonHeight), "ACT TWO", style))
+                if (GUI.Button(new Rect(topButtonX, topButtonY, buttonWidth, buttonHeight), "AKT TVÅ", style))
                     introText.Display(2, 1, this);
 
                 break;

@@ -11,7 +11,7 @@ public class FadingScript : MonoBehaviour
     int fadeDir = -1;
 
     float fadeSpeed = 0.5f;
-    float alpha = 0.0f; 
+    float alpha = 0.0f;
 
     void OnGUI()
     {
@@ -28,6 +28,11 @@ public class FadingScript : MonoBehaviour
 
     public float Begin(int direction)
     {
+        if (direction > 0)
+            GameObject.Find("PermObject").GetComponent<JournalScript>().activated = false;
+        else
+            GameObject.Find("PermObject").GetComponent<JournalScript>().activated = true;
+
         // When called, the fading is started
 
         fadeDir = direction;
