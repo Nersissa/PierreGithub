@@ -41,6 +41,8 @@ public class JournalScript : MonoBehaviour
 
     void OnGUI()
     {
+        HandleMiniMe(ref displaying);
+
         if (!displaying)
             return;
 
@@ -63,6 +65,9 @@ public class JournalScript : MonoBehaviour
         float descriptionHeight = abstractHeight;
 
         GUI.DrawTexture(new Rect(texPositionX, texPositionY, texWidth, texHeight), Background);
+
+        if (GUI.Button(new Rect(texPositionX  + texWidth - 40, texPositionY, 40, 40), "X"))
+            displaying = false;
 
         for (int nr = 0; nr < Quests.Count; nr++)
         {
@@ -87,5 +92,18 @@ public class JournalScript : MonoBehaviour
             }
             GUILayout.EndArea();
         }
+    }
+    void HandleMiniMe(ref bool displaying)
+    {
+        if (displaying)
+            return;
+
+        float Width = Screen.width / 20;
+        float Height = Screen.height / 10;
+        float X = Screen.width - Width;
+        float Y = Height;
+
+        if (GUI.Button(new Rect(X, Y, Width, Height), "Uppdrag"))
+            displaying = true;
     }
 }
