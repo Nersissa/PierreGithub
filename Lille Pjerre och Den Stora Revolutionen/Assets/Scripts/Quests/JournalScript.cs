@@ -8,23 +8,23 @@ public class JournalScript : MonoBehaviour
     public Font font;
 
     private int selectedQuest = 0;
-    private bool displaying;
+    protected bool displaying;
 
-    private List<Quest> Quests;
-    private GUIStyle inCompleted;
-    private GUIStyle completed;
+    protected List<Quest> Quests;
+    protected GUIStyle inCompletedStyle;
+    protected GUIStyle completedStyle;
 
     void Awake()
     {
         Quests = new List<Quest>();
 
-        inCompleted = new GUIStyle();
-        inCompleted.normal.textColor = Color.black;
-        inCompleted.font = font;
+        inCompletedStyle = new GUIStyle();
+        inCompletedStyle.normal.textColor = Color.black;
+        inCompletedStyle.font = font;
 
-        completed = new GUIStyle();
-        completed.normal.textColor = Color.grey;
-        completed.font = font;
+        completedStyle = new GUIStyle();
+        completedStyle.normal.textColor = Color.grey;
+        completedStyle.font = font;
     }
 
     void Update()
@@ -78,10 +78,10 @@ public class JournalScript : MonoBehaviour
             GUILayout.BeginArea(new Rect(descriptionPosX, descriptionPosY + descriptionHeight * nr, descriptionWidth, descriptionHeight));
 
             if (Quests[selectedQuest].GetStep(nr).Completed)
-                GUILayout.Label(Quests[selectedQuest].GetStep(nr).Objective, completed);
+                GUILayout.Label(Quests[selectedQuest].GetStep(nr).Objective, completedStyle);
             else
             {
-                GUILayout.Label(Quests[selectedQuest].GetStep(nr).Objective + "\n" + Quests[selectedQuest].GetStep(nr).Description, inCompleted);
+                GUILayout.Label(Quests[selectedQuest].GetStep(nr).Objective + "\n" + Quests[selectedQuest].GetStep(nr).Description, inCompletedStyle);
                 GUILayout.EndArea();
                 break;
             }
