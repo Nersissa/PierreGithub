@@ -23,15 +23,15 @@ public class Interactable : MonoBehaviour
 
     void OnGUI()
     {
-            if (inside)
-            {
-                GUI.DrawTexture(guidanceBox, GuidancePicture);
+        if (inside)
+        {
+            GUI.DrawTexture(guidanceBox, GuidancePicture);
 
-                if (ladder)
-                    guidanceBox = new Rect(Screen.width / 2 - boxW / 2, Screen.height / 2 - boxH - (boxH / 2), boxW, boxH * 2);
-            }  
-        
-        
+            if (ladder)
+                guidanceBox = new Rect(Screen.width / 2 - boxW / 2, Screen.height / 2 - boxH - (boxH / 2), boxW, boxH * 2);
+        }
+
+
     }
 
     public void Disable()
@@ -49,7 +49,7 @@ public class Interactable : MonoBehaviour
         if (other.name == "Player")
             inside = true;
         if (this.gameObject.name == "Ladder")
-            ladder = true;        
+            ladder = true;
     }
 
     void OnTriggerExit2D(Collider2D other)
