@@ -48,14 +48,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Start()
-    {
-        if (flipFromStart)
-            Flip();
-
+    {     
         // We need the rigidbody and animator of this GameObject
 
         this.rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        if (flipFromStart)
+            Flip();
 
         // The playerstate starts as neutral
 
