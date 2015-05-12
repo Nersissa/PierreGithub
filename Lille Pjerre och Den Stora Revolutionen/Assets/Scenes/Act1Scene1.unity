@@ -1963,6 +1963,26 @@ Prefab:
       propertyPath: m_SortingLayerID
       value: 1494405879
       objectReference: {fileID: 0}
+    - target: {fileID: 21286116, guid: 43030cd44cff54e42b6c521bd93cbd88, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300022, guid: b57704041b818a941922ccf07820c8eb,
+        type: 3}
+    - target: {fileID: 21221754, guid: 43030cd44cff54e42b6c521bd93cbd88, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300022, guid: b57704041b818a941922ccf07820c8eb,
+        type: 3}
+    - target: {fileID: 21251176, guid: 43030cd44cff54e42b6c521bd93cbd88, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300022, guid: b57704041b818a941922ccf07820c8eb,
+        type: 3}
+    - target: {fileID: 21276656, guid: 43030cd44cff54e42b6c521bd93cbd88, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300022, guid: b57704041b818a941922ccf07820c8eb,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43030cd44cff54e42b6c521bd93cbd88, type: 2}
   m_IsPrefabParent: 0
@@ -8124,6 +8144,7 @@ MonoBehaviour:
   moveSound2: {fileID: 8300000, guid: e3155cb2b328c1b46b94d8f9f38c09c7, type: 3}
   timeWalkSteps: .400000006
   timeRunSteps: .300000012
+  flipFromStart: 0
 --- !u!61 &1795742169
 BoxCollider2D:
   m_ObjectHideFlags: 0
