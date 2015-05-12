@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip moveSound2;
     public float timeWalkSteps = 0.4f;
     public float timeRunSteps = 0.3f;
+    public bool flipFromStart;
 
     PlayerState currentState;
 
@@ -48,7 +49,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        // We need the rigidbody and animator of this GameObject 
+        if (flipFromStart)
+            Flip();
+
+        // We need the rigidbody and animator of this GameObject
 
         this.rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();

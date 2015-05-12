@@ -1,19 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TriggerAct1Scene4 : MonoBehaviour
+public class TriggerNextScene : MonoBehaviour
 {
     FadingScript fading;
     Scenes scenes;
     PlayerMovement playerMove;
 
-    private IEnumerator TriggerNextScene()
+    public int scene;
+    public int act;
+    public int direction; // positive = right, negative = left
+
+    private IEnumerator TriggerScene()
     {
         fading.Begin(1);
         playerMove.Disable();
-        playerMove.MoveHorizontal(1);
+        playerMove.MoveHorizontal(direction);
         yield return new WaitForSeconds(3);
-        scenes.LoadScene(1, 4);
+        scenes.LoadScene(act, scene);
         fading.Begin(-1);
         Destroy(gameObject);
     }
@@ -30,6 +34,6 @@ public class TriggerAct1Scene4 : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.name == "Player")
-            StartCoroutine(TriggerNextScene());
+            StartCoroutine(TriggerScene());
     }
 }
