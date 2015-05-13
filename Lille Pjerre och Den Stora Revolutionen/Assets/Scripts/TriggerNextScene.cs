@@ -6,9 +6,10 @@ public class TriggerNextScene : MonoBehaviour
     FadingScript fading;
     Scenes scenes;
     PlayerMovement playerMove;
+    private ScrollingText scrollingText;
 
-    public int scene;
-    public int act;
+    public int nextScene;
+    public int nextAct;
     public int direction; // positive = right, negative = left
 
     private IEnumerator TriggerScene()
@@ -17,7 +18,8 @@ public class TriggerNextScene : MonoBehaviour
         playerMove.Disable();
         playerMove.MoveHorizontal(direction);
         yield return new WaitForSeconds(3);
-        scenes.LoadScene(act, scene);
+        scenes.LoadScene(nextAct, nextScene);
+        scrollingText.Display(nextAct, nextScene, GameObject.Find("Player").GetComponent<PlayerMovement>());
         fading.Begin(-1);
         Destroy(gameObject);
     }
@@ -29,6 +31,7 @@ public class TriggerNextScene : MonoBehaviour
         fading = GameObject.Find("PermObject").GetComponent<FadingScript>();
         scenes = GameObject.Find("PermObject").GetComponent<Scenes>();
         playerMove = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        scrollingText = GameObject.Find("PermObject").GetComponent<ScrollingText>();
     }
 
     void OnTriggerEnter2D(Collider2D other)

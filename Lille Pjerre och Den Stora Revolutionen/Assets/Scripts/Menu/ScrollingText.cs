@@ -123,9 +123,14 @@ public class ScrollingText : MonoBehaviour
 
         // Displays the correct text depending on act
 
-        Text = scenes.GetActText(ActNumber, SceneNumber);
-        DisplayingText = true;
-        fading.Begin(1);
+        if (scenes.GetActText(ActNumber, SceneNumber) != null)
+        {
+            Text = scenes.GetActText(ActNumber, SceneNumber);
+            DisplayingText = true;
+            fading.Begin(1);
+        }
+        else
+            scenes.TransitionToScene(ActNumber, SceneNumber);
     }
 
     public void DisplayFinal(int ActNumber, int SceneNumber, MonoBehaviour script = null)
@@ -142,9 +147,12 @@ public class ScrollingText : MonoBehaviour
 
         // Displays the correct text depending on act
 
-        Text = scenes.GetActText(ActNumber, SceneNumber);
-        DisplayingText = true;
-        fading.Begin(1);
+        if (scenes.GetActText(ActNumber, SceneNumber) != null)
+        {
+            Text = scenes.GetActText(ActNumber, SceneNumber);
+            DisplayingText = true;
+            fading.Begin(1);
+        }
         isFinal = true;
     }
 }
