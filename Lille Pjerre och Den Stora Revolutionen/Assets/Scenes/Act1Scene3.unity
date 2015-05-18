@@ -1465,7 +1465,7 @@ Transform:
   - {fileID: 786962489}
   - {fileID: 1240058159}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!114 &44222992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2717,6 +2717,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 62995693}
   - 114: {fileID: 62995694}
+  - 61: {fileID: 62995695}
   m_Layer: 8
   m_Name: WalkToTownQuest
   m_TagString: Untagged
@@ -2747,6 +2748,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e60632f3d22754fad1c2da860fc2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &62995695
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 62995692}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &64649395
 GameObject:
   m_ObjectHideFlags: 0
@@ -8452,6 +8466,14 @@ Prefab:
     - target: {fileID: 402808, guid: ab6f568bd3500c14e921fc8f43fcf359, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441756, guid: ab6f568bd3500c14e921fc8f43fcf359, type: 2}
+      propertyPath: sceneNumber
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441756, guid: ab6f568bd3500c14e921fc8f43fcf359, type: 2}
+      propertyPath: containsText
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab6f568bd3500c14e921fc8f43fcf359, type: 2}
@@ -22854,7 +22876,7 @@ Transform:
   - {fileID: 2051512458}
   - {fileID: 2118375031}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &529429255
 GameObject:
   m_ObjectHideFlags: 0
@@ -33003,7 +33025,7 @@ Transform:
   m_LocalScale: {x: 1.20818508, y: 1.32900298, z: 1.20818436}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &775945778
 GameObject:
   m_ObjectHideFlags: 0
@@ -45971,9 +45993,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1071198071}
   - 61: {fileID: 1071198070}
-  - 114: {fileID: 1071198072}
   m_Layer: 0
-  m_Name: TriggerNextScene
+  m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46004,20 +46025,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
---- !u!114 &1071198072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1071198069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d417e379e5d747f4fb463d74223ddfc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextScene: 4
-  nextAct: 1
-  direction: 1
 --- !u!1 &1071607929
 GameObject:
   m_ObjectHideFlags: 0
@@ -47307,7 +47314,7 @@ Transform:
   - {fileID: 80990656}
   - {fileID: 1439269833}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!61 &1104891893
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -123,14 +123,11 @@ public class ScrollingText : MonoBehaviour
 
         // Displays the correct text depending on act
 
-        if (scenes.GetActText(ActNumber, SceneNumber) != null)
-        {
-            Text = scenes.GetActText(ActNumber, SceneNumber);
-            DisplayingText = true;
-            fading.Begin(1);
-        }
-        else
-            scenes.TransitionToScene(ActNumber, SceneNumber);
+
+        Text = scenes.GetActText(ActNumber, SceneNumber);
+        DisplayingText = true;
+        fading.Begin(1);
+
     }
 
     public void DisplayFinal(int ActNumber, int SceneNumber, MonoBehaviour script = null)

@@ -12,7 +12,7 @@ public class TriggerNextScene : MonoBehaviour
     public int nextAct;
     public int direction; // positive = right, negative = left
 
-    private IEnumerator TriggerScene()
+    public IEnumerator TriggerScene()
     {
         fading.Begin(1);
         playerMove.Disable();

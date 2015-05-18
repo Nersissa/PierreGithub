@@ -7,8 +7,8 @@ public class SeedQuest : Quest
     public QuestStep PickUpSeeds, SowSeeds, Rest;
 
     private DialogueScript dialogue;
-    private ScrollingText scrollingText;
     private Interactable interactable;
+    private Scenes scenes;
 
     private string[] pickUpSeedsPrompt = { "PIERRE: -VILKEN VACKER VÅRDAG! IDAG PASSAR DET UTMÄRKT ATT SÅ MITT VETE INFÖR SOMMAREN. TRYCK PÅ 'J' FÖR ATT SE VAD SOM BEHÖVER GÖRAS." };
     private string[] goSowPrompt = { "PIERRE: -VAD BRA, NU HAR JAG MINA FRÖN OCH KAN BÖRJA SÅ." };
@@ -20,8 +20,8 @@ public class SeedQuest : Quest
         : base(Name)
     {
         dialogue = GameObject.Find("PermObject").GetComponent<DialogueScript>();
-        scrollingText = GameObject.Find("PermObject").GetComponent<ScrollingText>();
         interactable = GameObject.Find("Field").GetComponent<Interactable>();
+        scenes = GameObject.Find("PermObject").GetComponent<Scenes>();
 
         PickUpSeeds = new QuestStep("PLOCKA UPP FRÖNA PÅ LADULOFTET", "Du hittar ladan till vänster om Pierres hus.");
         SowSeeds = new QuestStep("SÅ FRÖNA PÅ FÄLTET", "Fältet finns till höger om Pierres Hus.");
@@ -54,7 +54,7 @@ public class SeedQuest : Quest
 
     void TriggerNextScene(object sender, EventArgs e)
     {
-        scrollingText.Display(1, 2, GameObject.Find("Player").GetComponent<PlayerMovement>());
+        scenes.TransitionToScene();
     }
 
     void TryToSowSeeds(object sender, EventArgs e)

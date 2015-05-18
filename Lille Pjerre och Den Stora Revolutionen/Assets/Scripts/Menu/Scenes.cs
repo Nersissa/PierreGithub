@@ -2,8 +2,11 @@
 using System.Collections;
 using System.IO;
 
- public class Scenes : MonoBehaviour
+public class Scenes : MonoBehaviour
 {
+    public int actNumber, sceneNumber;
+    public bool containsText;
+
     ArrayList Text = new ArrayList();
 
     public ArrayList GetActText(int ActNumber, int SceneNumber)
@@ -42,16 +45,24 @@ using System.IO;
         Application.LoadLevel("Act" + ActNumber.ToString() + "Scene" + SceneNumber.ToString());
     }
 
-    private IEnumerator WaitForScene(int ActNumber, int SceneNumber)
+    private IEnumerator WaitForScene()
     {
         GameObject.Find("PermObject").GetComponent<FadingScript>().Begin(1);
         yield return new WaitForSeconds(2);
-        LoadScene(ActNumber, SceneNumber);
-        GameObject.Find("PermObject").GetComponent<FadingScript>().Begin(-1);
+        if (containsText)
+        {
+            GameObject.Find("PermObject").GetComponent<ScrollingText>().Display(actNumber, sceneNumber);
+        }
+        else
+        {
+            LoadScene(actNumber, sceneNumber);
+            GameObject.Find("PermObject").GetComponent<FadingScript>().Begin(-1);
+        }
+
     }
 
-    public void TransitionToScene(int ActNumber, int SceneNumber)
+    public void TransitionToScene()
     {
-        StartCoroutine(WaitForScene(ActNumber, SceneNumber));
+        StartCoroutine(WaitForScene());
     }
 }

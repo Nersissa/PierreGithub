@@ -1141,8 +1141,8 @@ GameObject:
   - 4: {fileID: 206318175}
   - 212: {fileID: 206318178}
   - 61: {fileID: 206318177}
-  - 114: {fileID: 206318176}
   - 114: {fileID: 206318179}
+  - 114: {fileID: 206318176}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Untagged
@@ -1166,13 +1166,12 @@ Transform:
 --- !u!114 &206318176
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11469534, guid: ee8fbfede65e34647a6cae68ff5e2f02,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 206318174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0c406aa68c81134591fb26c43651172, type: 3}
+  m_Script: {fileID: 11500000, guid: a455a810a585c014b9809487f70c5c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &206318177
@@ -9268,6 +9267,22 @@ Prefab:
       value: 
       objectReference: {fileID: 12800000, guid: 682e7aecfe147244cbb0ffa27049133b,
         type: 3}
+    - target: {fileID: 11432724, guid: ab6f568bd3500c14e921fc8f43fcf359, type: 2}
+      propertyPath: containsText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432724, guid: ab6f568bd3500c14e921fc8f43fcf359, type: 2}
+      propertyPath: actNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432724, guid: ab6f568bd3500c14e921fc8f43fcf359, type: 2}
+      propertyPath: sceneNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11485462, guid: ab6f568bd3500c14e921fc8f43fcf359, type: 2}
+      propertyPath: activated
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab6f568bd3500c14e921fc8f43fcf359, type: 2}
   m_IsPrefabParent: 0
