@@ -21,13 +21,13 @@ public class MenuButtonsFactory : MonoBehaviour
 
     ScreenState state = ScreenState.StartScreen;
 
-    ScrollingText introText;
+    Scenes scenes;
 
     // Sets a method which is used to wait an amount of seconds before proceeding
 
     void Start()
     {
-        introText = GameObject.Find("PermObject").GetComponent<ScrollingText>();
+        scenes = GameObject.Find("PermObject").GetComponent<Scenes>();
 
         buttonWidth = Screen.width / 4;
         buttonHeight = Screen.height / 8;
@@ -50,28 +50,28 @@ public class MenuButtonsFactory : MonoBehaviour
 
         style.font = font;
 
-        switch (state)
-        {
-            case ScreenState.StartScreen:
+        //switch (state)
+        //{
+        //    case ScreenState.StartScreen:
 
                 if (GUI.Button(new Rect(topButtonX, topButtonY, buttonWidth, buttonHeight), "SPELA FRÅN BÖRJAN", style))
-                    introText.Display(1, 1, this);
+                    scenes.TryNextScene();
 
-                if (GUI.Button(new Rect(topButtonX, topButtonY + buttonHeight * 2, buttonWidth, buttonHeight), "VÄLJ AKT", style))
-                    state = ScreenState.ActScreen;
+                //if (GUI.Button(new Rect(topButtonX, topButtonY + buttonHeight * 2, buttonWidth, buttonHeight), "VÄLJ AKT", style))
+                //    state = ScreenState.ActScreen;
 
 
-                break;
-            case ScreenState.ActScreen:
+        //        break;
+        //    case ScreenState.ActScreen:
 
-                if (GUI.Button(new Rect(10, 10, 100, 50), "TILLBAKA", style))
-                    state = ScreenState.StartScreen;
+        //        if (GUI.Button(new Rect(10, 10, 100, 50), "TILLBAKA", style))
+        //            state = ScreenState.StartScreen;
 
-                if (GUI.Button(new Rect(topButtonX, topButtonY, buttonWidth, buttonHeight), "AKT TVÅ", style))
-                    introText.Display(2, 1, this);
+        //        if (GUI.Button(new Rect(topButtonX, topButtonY, buttonWidth, buttonHeight), "AKT TVÅ", style))
+        //            scenes.Display(2, 1, this);
 
-                break;
-        }
+        //        break;
+        //}
     }
 
     #endregion

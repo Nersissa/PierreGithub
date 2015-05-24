@@ -16,9 +16,6 @@ public class ScrollingText : MonoBehaviour
     float originalScrollSpeed;
     float textOffset = 0;
 
-    int ActToLoad;
-    int SceneToLoad;
-
     GUIStyle style;
 
     FadingScript fading;
@@ -100,56 +97,24 @@ public class ScrollingText : MonoBehaviour
                 if (isFinal)
                     Application.Quit();
 
-                scenes.LoadScene(ActToLoad, SceneToLoad);
-                fading.Begin(-1);
+                scenes.LoadNextScene();
+
                 DisplayingText = false;
                 textOffset = 0;
             }
-
         }
     }
 
-    public void Display(int ActNumber, int SceneNumber, MonoBehaviour script = null)
+    public void Display(ArrayList Text, MonoBehaviour script = null)
     {
         // Hides scripts if needed, like menu buttons
 
         if (script != null)
             script.enabled = false;
 
-        //  Makes sure the correct Scene is loaded afterwards
-
-        ActToLoad = ActNumber;
-        SceneToLoad = SceneNumber;
-
         // Displays the correct text depending on act
 
-
-        Text = scenes.GetActText(ActNumber, SceneNumber);
+        this.Text = Text;
         DisplayingText = true;
-        fading.Begin(1);
-
-    }
-
-    public void DisplayFinal(int ActNumber, int SceneNumber, MonoBehaviour script = null)
-    {
-        // Hides scripts if needed, like menu buttons
-
-        if (script != null)
-            script.enabled = false;
-
-        //  Makes sure the correct Scene is loaded afterwards
-
-        ActToLoad = ActNumber;
-        SceneToLoad = SceneNumber;
-
-        // Displays the correct text depending on act
-
-        if (scenes.GetActText(ActNumber, SceneNumber) != null)
-        {
-            Text = scenes.GetActText(ActNumber, SceneNumber);
-            DisplayingText = true;
-            fading.Begin(1);
-        }
-        isFinal = true;
     }
 }

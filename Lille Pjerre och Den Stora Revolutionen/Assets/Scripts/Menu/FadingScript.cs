@@ -33,6 +33,13 @@ public class FadingScript : MonoBehaviour
         else
             GameObject.Find("PermObject").GetComponent<JournalScript>().activated = true;
 
+        //around this point, we stopped caring
+
+        if (Application.loadedLevelName == "MainMenuScene")
+        {
+            GameObject.Find("PermObject").GetComponent<JournalScript>().activated = false;
+        }
+
         // When called, the fading is started
 
         fadeDir = direction;

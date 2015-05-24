@@ -54,7 +54,7 @@ public class SeedQuest : Quest
 
     void TriggerNextScene(object sender, EventArgs e)
     {
-        scenes.TransitionToScene();
+        scenes.TryNextScene();
     }
 
     void TryToSowSeeds(object sender, EventArgs e)

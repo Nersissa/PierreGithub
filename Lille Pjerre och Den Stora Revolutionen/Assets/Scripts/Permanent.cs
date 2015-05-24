@@ -20,4 +20,9 @@ public class Permanent : MonoBehaviour
         if (otherPermObject != gameObject)
             Destroy(gameObject);
     }
+
+    void OnLevelWasLoaded()
+    {
+        Debug.Log(Application.loadedLevelName);
+    }
 }
